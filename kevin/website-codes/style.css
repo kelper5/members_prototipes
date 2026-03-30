@@ -1,0 +1,64 @@
+/* TELA LOGIN */
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border: none;
+    list-style-type: none;
+    text-decoration: none;
+}
+.container{
+    width: 100vw;
+    height: 100vh;
+    background-color:  #1B301C;
+    display: flex;
+}
+
+.logo img{
+    width: 350px;
+    height: 150px;
+}
+
+.content{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.content h1{
+    color: #c7cfc6;
+}
+
+.content form{
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    color: #fff;
+}
+.content form input{
+    height: 40px;
+    border-radius: 10px;
+}
+
+.content form button{
+    height: 50px;
+    border-radius: 10px;
+    background-color: #4DAE50;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.input{
+    display: flex;
+    flex-direction: column;
+}
+
+figure img{
+    width: 940px;
+    height: 100vh;
+}
