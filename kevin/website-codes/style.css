@@ -15,7 +15,7 @@
 }
 
 .logo img{
-    width: 350px;
+    width: 300px;
     height: 150px;
 }
 
@@ -42,6 +42,8 @@
 .content form input{
     height: 40px;
     border-radius: 10px;
+    background-color: #38453C;
+    color: #fff;
 }
 
 .content form button{
@@ -61,4 +63,14 @@
 figure img{
     width: 940px;
     height: 100vh;
+}
+
+.register-a{
+    align-self: center;
+    font-size: 0.8em;
+}
+
+.register-a a{
+    color: #fff;
+    font-weight: bold;
 }
