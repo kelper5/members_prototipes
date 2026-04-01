@@ -56,31 +56,19 @@ truncate table viveiro;
 -- 3. Populando Sensores
 
 -- Tabela sensor que irá armazenar os dados de cada sensor presente dentro do sistema(no minímo 4 sensores por sistema).
-create table sensorlum(
-	idSensorL 			int primary key not null,		-- Identificador único de cada sensor.
-    status				boolean,						-- valor 0 ou 1 para identificar se o sensor está online ou não.
-    createdAt			datetime default(curdate()),	-- data de criação do sensor.
-    updatedAt			datetime						-- data da ultima atulização dos dados presentes, afins de auditoria e etc.
-);
-drop table sensorlum;
+
 
 
 -- Simulando ??? sensores para o primeiro viveiro.
-insert into sensorlum (idSensor, status, createdAt) values
-(1, 1, '2024-01-11 10:00:00'),
-(2, 1, '2024-01-11 10:00:00'),
-(3, 1, '2024-01-11 10:00:00'),
-(4, 0, '2024-01-11 10:00:00');                      -- Sensor offline para teste 
+                   -- Sensor offline para teste 
 
-truncate table sensorlum;
-
-create table sensorTemp(
-	idSensorT 			int primary key not null,		-- Identificador único de cada sensor.
-    status				boolean,						-- valor 0 ou 1 para identificar se o sensor está online ou não.
-    createdAt			datetime default(curdate()),	-- data de criação do sensor.
-    updatedAt			datetime						-- data da ultima atulização dos dados presentes, afins de auditoria e etc.
+create table sensor(
+	idSensor			int primary key not null,		
+    status				boolean,						
+    createdAt			datetime default(curdate()),	
+    updatedAt			datetime						
 );
-drop table sensorTemp;
+
 
 
 -- Simulando 4 sensores para o primeiro viveiro.
@@ -90,14 +78,11 @@ drop table sensorTemp;
 (3, 1, '2024-01-11 10:00:00'),
 (4, 0, '2024-01-11 10:00:00');  */                         -- Sensor offline para teste 
 
-truncate table sensorTemp;
-
 -- Tabela leitura que armazena todas as leituras feitas pelos sensores.
 create table leitura(
 	idLeitura 			int primary key not null,		-- Identificador único de cada leitura.
-    intensidade 		int , 					-- Valor para armazenar todos os valores obtidos pelos sensores em lúmens.
-    createdAt 			datetime,						-- Data de quando a leitura foi feita
-	temperatura         int 
+    dado 		        float , 					-- Valor para armazenar todos os valores obtidos pelos sensores em lúmens.
+    createdAt 			datetime default(curdate())						-- Data de quando a leitura foi feita
 );
 
 drop table leitura;
