@@ -1,0 +1,58 @@
+/* TELA INSTITUCIONAL */
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border: none;
+    list-style-type: none;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+
+.container{
+    width: 100vw;
+    ;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #1B301C
+}
+
+.navbar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 80%;
+    justify-content: space-between;
+}
+
+.navbar img{
+    width: 250px;
+    height: 100px;
+}
+
+.navbar ul{
+    display: flex;
+    gap: 30px;
+    border: 1px solid black;
+    align-items: center;
+    color: #fff;
+}
+
+.navbar button{
+    padding: 6px;
+    border-radius: 20px;
+    background-color: #4DAE50;
+    color: #fff;
+}
+
+header h1{
+    font-size: 3.5em;
+    color: #fff;
+
+}
+

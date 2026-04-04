@@ -1,4 +1,4 @@
-/* TELA LOGIN */
+/* TELA LOGIN E CADASTRO*/
 *{
     box-sizing: border-box;
     padding: 0;
@@ -86,3 +86,4 @@ figure img{
 .group input{
     width: 250px;
 }
+
