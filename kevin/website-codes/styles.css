@@ -265,6 +265,27 @@ header{
     margin-top: 20px;
 }
 
+footer{
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
 footer img{
     width: 300px;
+}
+
+.columns{
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
