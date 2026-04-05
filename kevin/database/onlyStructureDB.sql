@@ -23,7 +23,7 @@ CREATE TABLE empresa (
     createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_empresa_matriz FOREIGN KEY (fk_matriz) REFERENCES empresa(idEmpresa),
-    CONSTRAINT fk_empresa_cep FOREIGN KEY (fk_cep) REFERENCES endereco(idEndereco)
+    CONSTRAINT fk_empresa_cep FOREIGN KEY (fk_endereco) REFERENCES endereco(idEndereco)
 );
 
 CREATE TABLE usuario (
@@ -52,7 +52,6 @@ CREATE TABLE viveiro (
 
 CREATE TABLE sensor (
     idSensor INT PRIMARY KEY AUTO_INCREMENT,
-    modelo VARCHAR(50), -- Ex: 'Arduino Uno', 'DHT11'
     fk_viveiro INT,
     createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
