@@ -45,6 +45,7 @@
     border-radius: 10px;
     background-color: #38453C;
     color: #fff;
+    padding-left: 10px;
 }
 
 .content form button{
@@ -85,5 +86,6 @@ figure img{
 
 .group input{
     width: 250px;
+    padding-left: 10px;
 }
 

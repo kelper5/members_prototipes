@@ -12,6 +12,7 @@
 
 .container{
     width: 100vw;
+    background-color: #BCC3BA;
 }
 
 header{
@@ -44,12 +45,17 @@ header{
     font-size: 1.3em;
 }
 
-.navbar button{
+.navbar button {
     padding: 6px;
     border-radius: 20px;
     background-color: #4DAE50;
     color: #fff;
     font-size: 0.7em;
+}
+
+.navbar a{
+    color: #fff;
+    padding: 0px 20px;
 }
 
 .impact{
@@ -267,6 +273,7 @@ header{
     width: 500px;
     height: 50px;
     border-radius: 10px;
+    padding-left: 10px;
 }
 
 /* .inputGroup{
