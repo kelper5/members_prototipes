@@ -34,7 +34,7 @@
 }
 
 .content form{
-    width: 500px;
+    width: 800px;
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -85,7 +85,7 @@ figure img{
 }
 
 .group input{
-    width: 250px;
+    width: 395px;
     padding-left: 10px;
 }
 
