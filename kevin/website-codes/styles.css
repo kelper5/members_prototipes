@@ -28,6 +28,7 @@ header{
     align-items: center;
     width: 80%;
     justify-content: space-between;
+    margin-top: 20px;
 }
 
 .navbar img{
@@ -38,9 +39,9 @@ header{
 .navbar ul{
     display: flex;
     gap: 30px;
-    border: 1px solid black;
     align-items: center;
     color: #fff;
+    font-size: 1.3em;
 }
 
 .navbar button{
@@ -48,6 +49,7 @@ header{
     border-radius: 20px;
     background-color: #4DAE50;
     color: #fff;
+    font-size: 0.7em;
 }
 
 .impact{
@@ -92,6 +94,8 @@ header{
     justify-content: center;
     align-items: start;
     flex-direction: column;
+    gap: 30px;
+    margin-bottom: 50px;
 }
 
 .aboutUs h2{
@@ -196,6 +200,17 @@ header{
     height: 60px;
     border-radius: 10px;
     font-size: 1.3em;
+    color: #fff;
+}
+
+.buttons .primaryColor{
+    background-color: #4DAE50;
+
+}
+
+.buttons .secundaryColor{
+    background-color: #1B301C;
+    
 }
 
 .product-info h3{
@@ -227,6 +242,12 @@ header{
     display: flex;
     flex-direction: row;
     height: 600px;
+}
+
+.contactUs button{
+    background-color: #4DAE50;
+    color: #fff;
+    font-size: 1.3em;
 }
 
 .contactContent{
