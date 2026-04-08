@@ -66,3 +66,13 @@ CREATE TABLE sensor_data(
     fk_sensor INT,
     CONSTRAINT fk_leitura_sensor FOREIGN KEY (fk_sensor) REFERENCES sensor(idSensor)
 );
+
+insert into endereco
+            velues( default, "05080154", "Rua Jardim Lindosa", "Umuarama", "Osasco", "SP", default, default),
+( default, "04098132", "Av Alameda Das Maçãs", "Veloso", "Osasco", "SP", default, default),
+( default, "04081050", "Rua Amarguês Pereira", "Padroeira", "Osasco", "SP", default, default),
+( default, "04067041", "Rua Lin Ydna", "Vila Yara", "Osasco", "SP", default, default);
+
+insert into empresa
+            values(default, "Abidas", "176.583.652-17"
+
