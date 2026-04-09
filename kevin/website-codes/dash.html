@@ -23,17 +23,27 @@
         </div>
         <div class="content">
             <div class="greeting">
-                <p>Olá, Kevin</p>
+                <div class="greet">
+                    <p>Olá, user</p>
+                    <p>Bem-vindo a fazenda xxxxx</p>
+                </div>
+                <select name="" id="">
+                    <option value="">Viveiro 1</option>
+                </select>
             </div>
             <div class="graphSession">
                 <div class="kpi">
-                    <div class="kpiLum"></div>
-                    <div class="kpiEutrofizacao"></div>
-                    <div class="kpiStatusSensores"></div>
+                    <div class="kpiLum">Incidência Luminosa</div>
+                    <div class="kpiEutrofizacao">Risco de Eutrofização</div>
+                    <div class="kpiStatusSensores">Status sensores</div>
                 </div>
                 <div class="graphics">
-                    <div class="lumGraph"></div>
-                    <div class="tempGraph"></div>
+                    <div class="lumGraph">
+                        <canvas id="graficoLinha"></canvas>
+                    </div>
+                    <div class="tempGraph">
+                        <canvas id="graficoColuna"></canvas>
+                    </div>
                     <div class="activesGraph"></div>
                 </div>
             </div>
@@ -43,3 +53,5 @@
     <footer></footer>
 </body>
 </html>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="./scriptDash.js"></script>

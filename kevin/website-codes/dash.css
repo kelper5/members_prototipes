@@ -12,7 +12,7 @@ main{
     display: flex;
     flex-direction: row;
     width: 100vw;
-    height: 100vh;
+    height: 100vh; 
     border: 1px solid red;
     justify-content: center;
 }
@@ -29,6 +29,21 @@ main{
     width: 20%;
     height: 100%;
     border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+    font-size: 1.3em;
+}
+
+.navBar ul{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.navBar ul li{
+    border: 1px solid green;
 }
 
 .navBar img{
@@ -39,6 +54,8 @@ main{
     border: 1px solid green;
     width: 75%;
     display: flex;
+    flex-direction: column;
+    gap: 40px;
     /* justify-self: end; */
     /* border-radius: 20px; */
 }
@@ -47,5 +64,59 @@ main{
     border: 1px solid pink;
     width: 100%;
     height: 200px;
-    border-radius: 20px; 
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.greeting select{
+    width: 200px;
+    height: 50px;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 1.3em
+}
+
+
+.graphSession{
+    border: 1px solid orange;
+    width: 100%;
+    height: 1000px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.graphics{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid aqua;
+    width: 90%;
+    height: fit-content;
+}
+
+.lumGraph, .tempGraph{
+    width: 50%;
+    /* height: 200px; */
+}
+
+.kpi{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 70px;
+    width: 90%;
+    border: 1px solid rebeccapurple;
+}
+
+.kpiLum, .kpiEutrofizacao, .kpiStatusSensores{
+    border: 1px solid brown;
+    border-radius: 20px;
+    width: 100%;
+    height: 100px;
 }
