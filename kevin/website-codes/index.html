@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>Kelper - Home</title>
 </head>
+
 <body>
     <div class="container">
         <header>
@@ -26,7 +28,7 @@
                 <h1>AGREGANDO VALOR À SUA</h1>
                 <h1>PRODUÇÃO</h1>
             </div>
-            
+
         </header>
         <main>
             <div class="banner">
@@ -37,17 +39,22 @@
             <div class="containerMain">
                 <div class="aboutUs">
                     <h2>Quem Somos?</h2>
-                    <p>— Uma iniciativa que conjuga técnica e experiência do dia a dia para agregar valor ao seu negócio</p>
+                    <p>— Uma iniciativa que conjuga técnica e experiência do dia a dia para agregar valor ao seu negócio
+                    </p>
                     <figure>
                         <img src="./img/aboutUsImg.jpg" alt="">
                     </figure>
-                    <p>A Kelper é uma AgriTech especializada em soluções IoT para o crescente setor da piscicultura. Nós acreditamos no uso da tecnologia de forma inteligente para gerar valor e sabedoria ao seu negócio. Por meio do monitoramento em tempo real, da coleta estratégica de dados e da automação de processos, promovemos maior controle produtivo, redução de perdas e aumento da eficiência operacional.</p>
+                    <p>A Kelper é uma AgriTech especializada em soluções IoT para o crescente setor da piscicultura. Nós
+                        acreditamos no uso da tecnologia de forma inteligente para gerar valor e sabedoria ao seu
+                        negócio. Por meio do monitoramento em tempo real, da coleta estratégica de dados e da automação
+                        de processos, promovemos maior controle produtivo, redução de perdas e aumento da eficiência
+                        operacional.</p>
                 </div>
                 <div class="ourTeam">
-                   <div class="textTeam">
+                    <div class="textTeam">
                         <h3>Nossa Equipe</h3>
                         <p>Conheça os profissionais que fazem a Kelper acontecer.</p>
-                   </div>
+                    </div>
                     <div class="pics">
                         <figure>
                             <img src="./img/profileExample.jpg" alt="">
@@ -73,16 +80,114 @@
                     </figure>
                 </div>
                 <div class="calculator">
-                    <!-- DEFINIR CALCULADORA FINAL -->
-                     <p>Área calculadora</p>
+                    <div class="calculatorInformations">
+                        <div class="infoGroup">
+                            <h2>O quanto vocẽ perde?</h2>
+                            <p>— O problema da eutrofização é uma dor real no universo da piscicultura e pode estar
+                                prejudicando a sua produção neste exato momento. Para te ajudar a entender exatamente o
+                                quanto este problema está impactando a sua produção, criamos uma calculadora que estima
+                                os valores em jogo quando se trata do seu negócio.
+                                Utilizá-la é tão simples quanto inserir os dados nos campos ao lado.
+                            </p>
+                        </div>
+                        <div class="infoGroup">
+                            <h2>Eutrofização</h2>
+                            <p>— O problema da eutrofização é uma dor real no universo da piscicultura e pode estar
+                                prejudicando a sua produção neste exato momento. Para te ajudar a entender exatamente o
+                                quanto este problema está impactando a sua produção, criamos uma calculadora que estima
+                                os valores em jogo quando se trata do seu negócio.
+                                Utilizá-la é tão simples quanto inserir os dados nos campos ao lado.
+                            </p>
+                        </div>
+                        <div class="infoGroup">
+                            <h2>Biomassa</h2>
+                            <p>— O problema da eutrofização é uma dor real no universo da piscicultura e pode estar
+                                prejudicando a sua produção neste exato momento. Para te ajudar a entender exatamente o
+                                quanto este problema está impactando a sua produção, criamos uma calculadora que estima
+                                os valores em jogo quando se trata do seu negócio.
+                                Utilizá-la é tão simples quanto inserir os dados nos campos ao lado.
+                            </p>
+                        </div>
+                        <div class="infoGroup">
+                            <h2>Densidade</h2>
+                            <p>— O problema da eutrofização é uma dor real no universo da piscicultura e pode estar
+                                prejudicando a sua produção neste exato momento. Para te ajudar a entender exatamente o
+                                quanto este problema está impactando a sua produção, criamos uma calculadora que estima
+                                os valores em jogo quando se trata do seu negócio.
+                                Utilizá-la é tão simples quanto inserir os dados nos campos ao lado.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="calculatorForm">
+                        <div class="calculatorInputs">
+                            <div class="field-wrapper">
+                                <h3>• Sobre do Viveiro</h3>
+                                <div class="field-group">
+                                    <div class="field">
+                                        <span>Largura (m)</span>
+                                        <input id="inLargura" type="number" min="0" name="largura">
+                                    </div>
+                                    <div class="field">
+                                        <span>Comprimento (m)</span>
+                                        <input id="inComprimento" type="number" min="0" name="comprimento">
+                                    </div>
+                                    <div class="field">
+                                        <span>Profundidade (m)</span>
+                                        <input id="inProfundidade" type="number" min="0" name="profundidade">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field-wrapper">
+                                <h3>• Sobre o Lote</h3>
+                                <div class="field-group">
+                                    <div class="field">
+                                        <span>Número de Peixes/Viveiro</span>
+                                        <input id="inPeixes" type="number" min="0" name="peixes">
+                                    </div>
+                                    <div class="field">
+                                        <span>Peso Médio/Peixe (g)</span>
+                                        <input id="inPeso" type="number" min="0" name="peso">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field-wrapper">
+                                <h3>• Outros</h3>
+                                <div class="field-group">
+                                    <div class="field">
+                                        <span>Preço da Tilápia (Kg)</span>
+                                        <input id="inPrecoPeixe" type="number" min="0" name="preco-tilapia">
+                                    </div>
+                                    <div class="field">
+                                        <span>Preço da Ração (Kg)</span>
+                                        <input id="inPrecoRacao" type="number" min="0" name="preco-racao">
+                                    </div>
+                                    <div class="field">
+                                        <span>Quantidade de Viveiros</span>
+                                        <input id="inViveiros" type="number" min="1" name="viveiros">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-action">
+                                <button class="submit" onclick="calcular()">Analisar Cenário</button>
+                                <button class="clear" onclick="limpar()">Limpar</button>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="product">
                     <div class="product-info">
                         <div class="info">
                             <h3>Kelper-LDR</h3>
                             <p>A Solução para o problema da Eutrofização tem nome — Kelper-LDR.</p>
-                            <p>O Kelper-LDR é uma solução IoT que utiliza sensores de luminosidade potentes e placas de microcontroladores para monitorar em tempo real os índices de incidência luminosa sobre os seus viveiros.</p>
-                            <p>Os dados coletados pelo Kelper-LDR, são tratados e enviados à nossa base de dados onde, ao serem servidos para o cliente através de nossa plataforma web, permitem que o piscicultor tenha total ciência sobre os parâmetros de qualidade da água em seus viveiros. Entendendo a melhor forma de agir, e quando agir — de modo a nunca ser pego de surpresa e evitando gastos com perdas inesperadas.</p>
+                            <p>O Kelper-LDR é uma solução IoT que utiliza sensores de luminosidade potentes e placas de
+                                microcontroladores para monitorar em tempo real os índices de incidência luminosa sobre
+                                os seus viveiros.</p>
+                            <p>Os dados coletados pelo Kelper-LDR, são tratados e enviados à nossa base de dados onde,
+                                ao serem servidos para o cliente através de nossa plataforma web, permitem que o
+                                piscicultor tenha total ciência sobre os parâmetros de qualidade da água em seus
+                                viveiros. Entendendo a melhor forma de agir, e quando agir — de modo a nunca ser pego de
+                                surpresa e evitando gastos com perdas inesperadas.</p>
                         </div>
                         <div class="buttons">
                             <button class="primaryColor">Adquirir</button>
@@ -92,7 +197,7 @@
                     <div class="product-images">
                         <figure>
                             <img src="./img/temp1.jpg" alt="">
-                             <!-- <img src="./img/temp2.jpg" alt=""> -->
+                            <!-- <img src="./img/temp2.jpg" alt=""> -->
                         </figure>
                     </div>
                 </div>
@@ -126,25 +231,197 @@
             </figure>
             <div class="columns">
                 <div class="column">
-                <p>Sobre Nós</p>
-                <p>Nossa Missão</p>
-                <p>Estimativas</p>
-                <p>Produtos</p>
+                    <p>Sobre Nós</p>
+                    <p>Nossa Missão</p>
+                    <p>Estimativas</p>
+                    <p>Produtos</p>
                 </div>
                 <div class="column">
-                <p>Suporte</p>
-                <p>Central de Ajuda</p>
-                <p>Contato</p>
-                <p>Políticas de Privacidade</p>
+                    <p>Suporte</p>
+                    <p>Central de Ajuda</p>
+                    <p>Contato</p>
+                    <p>Políticas de Privacidade</p>
                 </div>
                 <div class="column">
-                <p>Comunidade</p>
-                <p>Blogs</p>
-                <p>Eventos</p>
-                <p>FAQ</p>
+                    <p>Comunidade</p>
+                    <p>Blogs</p>
+                    <p>Eventos</p>
+                    <p>FAQ</p>
                 </div>
             </div>
         </footer>
     </div>
 </body>
+
 </html>
+<script>
+    function calcular() {
+        // === Configuração Inicial === //
+        let largura = Number(inLargura.value);              // largura do viveiro, em metros
+        let comprimento = Number(inComprimento.value);      // comprimento do viveiro, em metros
+        let profundidade = Number(inProfundidade.value);    // profundidade do viveiro, em metros
+
+
+        let qtdPeixes = Number(inPeixes.value);             // quantidade de peixes por viveiro
+        let qtdViveiros = Number(inViveiros.value);         // quantidade de viveiros considerados
+
+        let pesoKg = Number(inPeso.value)/ 1000;            // peso médio dos peixes, em kg
+        // let racaoKg = Number(inRacao.value);                // ração/dia por viveiro
+
+        let precoPeixe = Number(inPrecoPeixe.value);        // preço do quilo do peixe
+        let precoRacao = Number(inPrecoRacao.value);        // preço do quilo da ração
+        let precoBaseKelper = 500;                          // preço base do Kelper (arbitrário)
+        
+        // === Cálculos === //
+        let risco = 0;                                      // risco base de eutrofização
+        let limBiomassaHa = 10000;                          // limite saudável de biomassa por hectare
+        let taxaArracoamento = 0;                           // taxa de arraçoamento
+        
+        // Cálculo da Taxa de Arraçoamento com base em valores da EMBRAPA
+        if(pesoKg <= 0.05){                                       
+            taxaArracoamento =  0.0425;
+        }else if(pesoKg <= 0.15){
+            taxaArracoamento = 0.035;
+        }else if(pesoKg <= 0.25){
+            taxaArracoamento =  0.03;
+        }else if(pesoKg <= 0.35){
+            taxaArracoamento = 0.025;
+        }else if(pesoKg <= 0.7){
+            taxaArracoamento =  0.02;
+         }else if(pesoKg <= 1){
+            taxaArracoamento =  0.015;
+         }else {
+            taxaArracoamento =  0.013;
+         }
+
+        let area = largura * comprimento;                   // area do viveiro, em m²
+
+                                                            // 1ha = 10.000m²
+        let hectares = area / 10000;                        // area do viveiro, em hectare (ha)
+
+                                                            // limite saudável: 1-2 kg/m²
+        let densidade = qtdPeixes / area;                   // densidade de peixes no viveiro, em kg/m²
+
+        let pesoTotal = qtdPeixes * pesoKg;                 // peso total no viveiro, em kg
+
+        // biomassa = capacidade de suporte, em (kg/m²) ou (kg/ha)
+        let biomassaHa = pesoTotal / hectares;              // biomassa de peixes no viveiro, em ha
+
+        let racaoDiaria = pesoTotal * taxaArracoamento;                 // estimativa da qtd de ração diaria por viveiro, considerando a taxa de arraçoamento.
+        let racaoHa = racaoDiaria / hectares;               // ração por hectare no viveiro
+
+        // Fator 1: Excesso de Biomassa
+        /*
+        A biomassa, ou capacidade de suporte, é um parâmetro que determina a
+        quantidade máxima de peixes que pode ser sustentada dentro de um viveiro.
+        Se ultrapassada, o crescimento dos peixes pode ser prejudicada e, eventualmente,
+        levados à morte.
+
+        expressa em hecatare, a capacidade limite de suporte, ou biomassa limite,
+        é de 10.000 kg/ha.
+
+        Diferença Biomassa x Densidade:
+
+            - Densidade: expressa a quantidade de peixes por m² ou ha.
+            ex: 20 alevinos ou 20 tilápias adultas gerariam a mesma densidade em 1 hectare: 20 peixes/ha
+
+            - Biomassa: expressa o peso de peixes por m² ou ha.
+            ex: 20 alevinos e 20 tilápias gerariam diferentes valores de biomassa:
+                20 alevinos de 100g = 2kg/ha     | baixa
+                20 tilápias de 1kg = 20kg/ha     | baixa, porém muito superior à de 20 alevinos
+
+
+        Abaixo, um if/else que calcula o seguinte:
+        - biomassa do viveiro > biomassa limite = risco aumenta em 50%
+        - biomassa do viveiro > biomassa limite / 2 = risco aumenta em 25%
+
+        obs: os valores 50% e 25% são arbitrários, eu os escolhi para que a 
+        porcentagem ficassem dentro de múltiplos de 5 (0%, 25%, 50%, 75%, 100%).
+        */
+        if(biomassaHa > limBiomassaHa) {
+            risco += 0.5;
+        } else if (biomassaHa > limBiomassaHa/2) {
+            risco += 0.25;
+        }
+        
+        // Fator 2: Excesso de Ração
+        /*
+        A quantidade de ração presente no viveiro também é outro parâmetro que
+        influencia diretamente no risco de eutrofização. Isso porque toda ração
+        que não é consumida pelos peixes, vira nutriente para o meio e para os
+        microorganismos presentes na água.
+
+        Quanto o ambiente já está sendo forçado pela quantidade de nutrientes como
+        ração e dejetos de peixes, ele não consegue absorver tudo e alguns parâmetros
+        de qualidade da água, como pH, são alterados.
+
+        O limite de ração ideal varia de situação para situação, mas o intervalo
+        entre 60kg-90kg de ração por dia por hectare, é uma boa faixa que, quando
+        ultrapassada, passa a ser tóxica para o ambiente.
+
+        Abaixo, um if/else que calcula o seguinte:
+        Aumento do risco de eutrofização com base nos limites estabelecidos acima
+        de racao, em kg/dia/ha.
+
+        obs: os valores 50% e 25% são arbitrários, eu os escolhi para que a 
+        porcentagem ficassem dentro de múltiplos de 5 (0%, 25%, 50%, 75%, 100%).
+        */
+        if(racaoHa > 90) {
+            risco += 0.5;
+        } else if (racaoHa > 60) {
+            risco += 0.25;
+        }
+
+        // pequena garantia de que o risco sempre estará na faixa 0% a 100%
+        if(risco > 1) risco = 1;
+
+        // Estimativa Financeira:
+        // o valor que o viveiro representa para o piscicultor, em R$
+        let valorLote = pesoTotal * precoPeixe * qtdViveiros;    
+
+        // o valor gasto em ração em todos os viveiros
+        let custoRacao = racaoDiaria * precoRacao * qtdViveiros; 
+
+        // o valor do prejuízo sobre a perda dos peixes naquele viveiro, baseado no risco calculado acima
+        // ex: valorTotal       = R$ 1.000,00
+        //     risco            = 0.50 (50%)
+        //     valorPrejuizo    = R$ 500,00 (pois foi considerado que 50% dos peixes naquele viveiro morreram, portanto 50% do valor daquele viveiro foi perdido) 
+        let valorPrejuizo = (valorLote + custoRacao) * risco;
+
+        // investimento total do sistema Kelper para instalar em todos os viveiros, em R$
+        let investimentoKelper = precoBaseKelper * qtdViveiros;
+
+        // quanto seria economizado pelo piscicultor, supondo que ele comprasse o Kelper, evitando o prejuizo previsto. em R$
+        let economia = valorPrejuizo - investimentoKelper;
+
+        // === Exibição das Informações === //
+        inResponse.innerHTML = `
+            <h2>Resultados</h2>
+            <hr>
+            <p>Densidade: <span>${densidade.toFixed(2)}</span> peixes/m²</p>
+            <p>Biomassa: <span>${biomassaHa.toFixed(2)}</span> kg/ha</p>
+            <p>Carga de Ração: <span>${racaoHa.toFixed(2)}</span>  kg/ha/dia</p>
+            <hr>
+            <p>Chance de Eutrofização: <span>${(risco * 100)}%</span></p>
+            <p>Valor Total em Risco: <span>R$ ${valorPrejuizo.toFixed(2)}</span></p>
+            <p>Investimento Kelper (${qtdViveiros} viveiros): <span>R$ ${investimentoKelper.toFixed(2)}</span></p>
+            <hr>
+            <h4 style="color: ${economia >= 0 ? "green" : "red"};">Economia Estimada: R$ ${economia.toFixed(2)}</h4>
+        `;
+    }
+
+    function limpar() {
+        inResponse.innerHTML = '';
+
+        inLargura.value = "";
+        inComprimento.value = "";
+        inProfundidade.value = "";
+        inPeixes.value = "";
+        inViveiros.value = "";
+        // inRacao.value = "";
+        inPeso.value = "";
+        inPrecoPeixe.value = "";
+        inPrecoRacao.value = "";
+        inResponse.innerHTML = "";
+    }
+</script>

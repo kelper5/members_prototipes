@@ -317,3 +317,51 @@ footer img{
     flex-direction: column;
     gap: 10px;
 }
+
+.calculator{
+    width: 100vw;
+    display: flex;
+    height: 500px
+}
+
+.calculatorInformations{
+    width: 50%;
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculatorForm{
+    width: 50%;
+    border: 1px solid blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3em;
+}
+
+.calculatorInputs{
+    width: 50%;
+}
+
+.field-wrapper{
+    border: 1px solid black;
+    width: 100%;
+}
+
+.field-group{
+    border: 1px solid green;
+}
+
+.field{
+    display: flex;
+    width: 100%;
+    border: 1px solid aqua;
+}
+
+.infoGroup{
+    width: 90%;
+    font-size: 0.9em;
+}
