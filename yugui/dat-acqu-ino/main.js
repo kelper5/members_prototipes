@@ -19,11 +19,11 @@ const serial = async (
     // conexão com o banco de dados MySQL
     let poolBancoDados = mysql.createPool(
         {
-            host: 'HOST_DO_BANCO',
-            user: 'USUARIO_DO_BANCO',
-            password: 'SENHA_DO_BANCO',
-            database: 'DATABASE_DO_BANCO',
-            port: 3306
+            host: '127.0.0.1',
+            user: 'aluno',
+            password: 'Sptech#2024',
+            database: 'Kelper',
+            port: 3307
         }
     ).promise();
 
@@ -65,13 +65,14 @@ const serial = async (
 
             // este insert irá inserir os dados na tabela "medida"
             await poolBancoDados.execute(
-                'INSERT INTO leitura (sensor, dado) VALUES (1, ?)',
-                [sensorAnalogico]
+                'INSERT INTO leitura (temperatura, luminosidade, fk_Arduino) VALUES (?, ?, 1)',
+                [sensorAnalogico, sensorAnalogico2]
             );
-            await poolBancoDados.execute(
-                'INSERT INTO leitura (sensor, dado) VALUES (2, ?)',
-                [sensorAnalogico2]
-            );
+
+            // await poolBancoDados.execute(
+            //     'INSERT INTO leitura (temperatura, luminosidade, fk_Arduino) VALUES (?, ?, ?)',
+            //     [sensorAnalogico, sensorAnalogico2, idArduino]
+            // );
         }
 
     });
