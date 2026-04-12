@@ -15,7 +15,8 @@ main{
     height: 100vh; 
     /* border: 1px solid red; */
     justify-content: center;
-    background-color: #38453C;
+    background-color: #1B301C;
+    display: flex;
 }
 .container{
     display: flex;
@@ -106,7 +107,6 @@ main{
     border-radius: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     background-color: rgba(77, 144, 80, 0.15);
     box-shadow: 1.5px 1.5px 1.5px 1.5px #000;
@@ -114,7 +114,7 @@ main{
 
 .graphics{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     /* border: 1px solid aqua; */
     width: 90%;
@@ -132,6 +132,7 @@ main{
     justify-content: space-around;
     gap: 70px;
     width: 90%;
+    margin: 50px 0px 150px 0px;
     /* border: 1px solid rebeccapurple; */
 }
 
@@ -147,6 +148,10 @@ main{
     justify-content: center;
     font-size: 2em;
     color: #fff;
+}
+
+.kpiLum h3, .kpiEutrofizacao h3, .kpiStatusSensores h3{
+    font-size: 0.8em;
 }
 
 /* ABA VIVEIROS */
@@ -176,6 +181,7 @@ main{
     /* align-items: center; */
     color: #fff;
     padding-left: 20px;
+    background-color: #303030;
 }
 
 .stats{
@@ -202,4 +208,5 @@ main{
     align-items: start;
     color: #fff;
     padding-left: 20px;
+    background-color: #303030;
 }
