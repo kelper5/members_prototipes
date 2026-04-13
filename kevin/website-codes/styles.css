@@ -353,6 +353,9 @@ footer img{
 
 .field-group{
     /* border: 1px solid green; */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .field{
@@ -363,6 +366,7 @@ footer img{
 }
 .field input{
     width: 200px;
+    border-radius: 10px;
 }
 
 .form-action{
