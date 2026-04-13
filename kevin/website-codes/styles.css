@@ -326,7 +326,7 @@ footer img{
 
 .calculatorInformations{
     width: 50%;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -335,7 +335,7 @@ footer img{
 
 .calculatorForm{
     width: 50%;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -347,18 +347,37 @@ footer img{
 }
 
 .field-wrapper{
-    border: 1px solid black;
+    /* border: 1px solid black; */
     width: 100%;
 }
 
 .field-group{
-    border: 1px solid green;
+    /* border: 1px solid green; */
 }
 
 .field{
     display: flex;
+    justify-content: space-between;
     width: 100%;
-    border: 1px solid aqua;
+    /* border: 1px solid aqua; */
+}
+.field input{
+    width: 200px;
+}
+
+.form-action{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.form-action button{
+    width: 40%;
+    height: 30px;
+    border-radius: 20px;
+    background-color: #4DAE50;
+    color: #fff;
+    font-size: 1em;
 }
 
 .infoGroup{

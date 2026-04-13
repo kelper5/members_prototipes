@@ -92,29 +92,19 @@
                         </div>
                         <div class="infoGroup">
                             <h2>Eutrofização</h2>
-                            <p>— O problema da eutrofização é uma dor real no universo da piscicultura e pode estar
-                                prejudicando a sua produção neste exato momento. Para te ajudar a entender exatamente o
-                                quanto este problema está impactando a sua produção, criamos uma calculadora que estima
-                                os valores em jogo quando se trata do seu negócio.
-                                Utilizá-la é tão simples quanto inserir os dados nos campos ao lado.
+                            <p>— A eutrofização é o aumento excessivo de nutrientes, principalmente nitrogênio e
+                                fósforo, em ambientes aquáticos (rios, lagos, mares), resultando na proliferação de
+                                algas, diminuição drástica do oxigênio e morte de organismos.
                             </p>
                         </div>
                         <div class="infoGroup">
                             <h2>Biomassa</h2>
-                            <p>— O problema da eutrofização é uma dor real no universo da piscicultura e pode estar
-                                prejudicando a sua produção neste exato momento. Para te ajudar a entender exatamente o
-                                quanto este problema está impactando a sua produção, criamos uma calculadora que estima
-                                os valores em jogo quando se trata do seu negócio.
-                                Utilizá-la é tão simples quanto inserir os dados nos campos ao lado.
+                            <p>— Trata-se, da matéria orgânica que tem como finalidade a produção de direta e indireta de bioenergia.
                             </p>
                         </div>
                         <div class="infoGroup">
                             <h2>Densidade</h2>
-                            <p>— O problema da eutrofização é uma dor real no universo da piscicultura e pode estar
-                                prejudicando a sua produção neste exato momento. Para te ajudar a entender exatamente o
-                                quanto este problema está impactando a sua produção, criamos uma calculadora que estima
-                                os valores em jogo quando se trata do seu negócio.
-                                Utilizá-la é tão simples quanto inserir os dados nos campos ao lado.
+                            <p>— propriedade física que relaciona a massa de um material ao volume que ele ocupa.
                             </p>
                         </div>
                     </div>
@@ -265,41 +255,41 @@
         let qtdPeixes = Number(inPeixes.value);             // quantidade de peixes por viveiro
         let qtdViveiros = Number(inViveiros.value);         // quantidade de viveiros considerados
 
-        let pesoKg = Number(inPeso.value)/ 1000;            // peso médio dos peixes, em kg
+        let pesoKg = Number(inPeso.value) / 1000;            // peso médio dos peixes, em kg
         // let racaoKg = Number(inRacao.value);                // ração/dia por viveiro
 
         let precoPeixe = Number(inPrecoPeixe.value);        // preço do quilo do peixe
         let precoRacao = Number(inPrecoRacao.value);        // preço do quilo da ração
         let precoBaseKelper = 500;                          // preço base do Kelper (arbitrário)
-        
+
         // === Cálculos === //
         let risco = 0;                                      // risco base de eutrofização
         let limBiomassaHa = 10000;                          // limite saudável de biomassa por hectare
         let taxaArracoamento = 0;                           // taxa de arraçoamento
-        
+
         // Cálculo da Taxa de Arraçoamento com base em valores da EMBRAPA
-        if(pesoKg <= 0.05){                                       
-            taxaArracoamento =  0.0425;
-        }else if(pesoKg <= 0.15){
+        if (pesoKg <= 0.05) {
+            taxaArracoamento = 0.0425;
+        } else if (pesoKg <= 0.15) {
             taxaArracoamento = 0.035;
-        }else if(pesoKg <= 0.25){
-            taxaArracoamento =  0.03;
-        }else if(pesoKg <= 0.35){
+        } else if (pesoKg <= 0.25) {
+            taxaArracoamento = 0.03;
+        } else if (pesoKg <= 0.35) {
             taxaArracoamento = 0.025;
-        }else if(pesoKg <= 0.7){
-            taxaArracoamento =  0.02;
-         }else if(pesoKg <= 1){
-            taxaArracoamento =  0.015;
-         }else {
-            taxaArracoamento =  0.013;
-         }
+        } else if (pesoKg <= 0.7) {
+            taxaArracoamento = 0.02;
+        } else if (pesoKg <= 1) {
+            taxaArracoamento = 0.015;
+        } else {
+            taxaArracoamento = 0.013;
+        }
 
         let area = largura * comprimento;                   // area do viveiro, em m²
 
-                                                            // 1ha = 10.000m²
+        // 1ha = 10.000m²
         let hectares = area / 10000;                        // area do viveiro, em hectare (ha)
 
-                                                            // limite saudável: 1-2 kg/m²
+        // limite saudável: 1-2 kg/m²
         let densidade = qtdPeixes / area;                   // densidade de peixes no viveiro, em kg/m²
 
         let pesoTotal = qtdPeixes * pesoKg;                 // peso total no viveiro, em kg
@@ -338,12 +328,12 @@
         obs: os valores 50% e 25% são arbitrários, eu os escolhi para que a 
         porcentagem ficassem dentro de múltiplos de 5 (0%, 25%, 50%, 75%, 100%).
         */
-        if(biomassaHa > limBiomassaHa) {
+        if (biomassaHa > limBiomassaHa) {
             risco += 0.5;
-        } else if (biomassaHa > limBiomassaHa/2) {
+        } else if (biomassaHa > limBiomassaHa / 2) {
             risco += 0.25;
         }
-        
+
         // Fator 2: Excesso de Ração
         /*
         A quantidade de ração presente no viveiro também é outro parâmetro que
@@ -366,21 +356,21 @@
         obs: os valores 50% e 25% são arbitrários, eu os escolhi para que a 
         porcentagem ficassem dentro de múltiplos de 5 (0%, 25%, 50%, 75%, 100%).
         */
-        if(racaoHa > 90) {
+        if (racaoHa > 90) {
             risco += 0.5;
         } else if (racaoHa > 60) {
             risco += 0.25;
         }
 
         // pequena garantia de que o risco sempre estará na faixa 0% a 100%
-        if(risco > 1) risco = 1;
+        if (risco > 1) risco = 1;
 
         // Estimativa Financeira:
         // o valor que o viveiro representa para o piscicultor, em R$
-        let valorLote = pesoTotal * precoPeixe * qtdViveiros;    
+        let valorLote = pesoTotal * precoPeixe * qtdViveiros;
 
         // o valor gasto em ração em todos os viveiros
-        let custoRacao = racaoDiaria * precoRacao * qtdViveiros; 
+        let custoRacao = racaoDiaria * precoRacao * qtdViveiros;
 
         // o valor do prejuízo sobre a perda dos peixes naquele viveiro, baseado no risco calculado acima
         // ex: valorTotal       = R$ 1.000,00
