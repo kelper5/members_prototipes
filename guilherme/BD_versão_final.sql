@@ -63,15 +63,10 @@ CREATE TABLE arduino_leitura(
 );
 
        create table alerta(
-	idAlerta 			int primary key not null,		-- Identificador único de cada alerta.
-	fkluminosidade		DECIMAL(10, 2) NOT NULL,					-- Média de luminosidade recebida pelo viveiro.
+	idAlerta 			int primary key not null,		
+	fkluminosidade		DECIMAL(10, 2) NOT NULL,			
     fktemperatura         DECIMAL(10, 2) NOT NULL,
-    nivelRisco			varchar(50), 					-- Armazenado em (Baixo, Médio e Grave).
-    analise				varchar(100),					-- Descrição sobre o alerta.
-    createdAt			datetime default current_timestamp,					    -- Data de quando o alerta foi feito
-    
-    constraint chk_nivelRisco check(nivelRisco in ("Baixo", "Médio", "Grave")),
-    constraint chk_nivelRisco check(nivelRiscoTemp in ("Baixo", "Médio", "Grave")),
+    createdAt			datetime default current_timestamp,					  
 	constraint luz foreign key (fkluminosidade) references arduino_leitura(luminosidade),
     constraint temp foreign key (fktemperatura) references arduino_leitura(temperatura)
  );

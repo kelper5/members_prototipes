@@ -13,51 +13,43 @@
         <div class="content">
             <figure class="logo"><img src="./img/LOGO.png" alt="Logo Kelper"></figure>
             <h1>Olá, Piscicultor. Vamos começar?</h1>
-            <form id="form_registro" action="" class="register" onsubmit="return validarCampos(event)">
+            <form action="" class="register">
                 <div class="group">
                     <div class="input">
                         <p>Nome</p>
-                        <input type="text" placeholder="João" minlength="2" maxlength="30" required>
+                        <input type="text" placeholder="João" id="ipt_nome">
                     </div>
                     <div class="input">
                         <p>Sobrenome</p>
-                        <input type="text" placeholder="Silva" minlength="2" maxlength="70" required>
-                    </div>
-                </div>
-                <div class="group">
-                    <div class="input">
-                        <p>Nome da propriedade</p>
-                        <input type="text" placeholder="Peixes do João" minlength="2" maxlength="70">
-                    </div>
-                    <div class="input">
-                        <p>CNPJ</p>
-                        <input type="text" placeholder="12345678912345" minlength="14" maxlength="14" required>
+                        <input type="text" placeholder="Silva" id="ipt_sobrenome">
                     </div>
                 </div>
                 <div class="group">
                     <div class="input">
                         <p>E-mail</p>
-                        <input type="email" placeholder="joao@gmail.com" required>
+                        <input type="text" placeholder="joao@gmail.com" id="ipt_email">
                     </div>
                     <div class="input">
-                        <p>Número de Telefone Celular</p>
-                        <input id="ipt_numero" type="tel" placeholder="11912345678" minlength="11" maxlength="11"
-                            required>
+                        <p>CPF</p>
+                        <input type="text" placeholder="12345678910" id="ipt_cpf">
                     </div>
                 </div>
                 <div class="group">
                     <div class="input">
                         <p>Senha</p>
-                        <input id="ipt_senha" type="password" placeholder="********" minlength="8" maxlength="128"
-                            required>
+                        <input type="password" placeholder="********" id="ipt_senha">
                     </div>
                     <div class="input">
                         <p>Confirmar senha</p>
-                        <input id="ipt_confirmacao_senha" type="password" placeholder="********" required>
+                        <input type="password" placeholder="********" id="ipt_conf_senha">
                     </div>
                 </div>
+                <div class="input">
+                    <p>Código de ativação</p>
+                    <input id="ipt_codigo" type="text" placeholder="ABC123" id="ipt_codigo">
+                </div>
 
-                <button type="submit">REGISTRAR</button>
+                <button type="button" onclick="validarCampos()">Registrar</button>
                 <div class="register-a">
                     <span>Já possui uma conta? </span><a href="login.html">Entre aqui!</a>
                 </div>
@@ -73,36 +65,25 @@
 <script>
     function validarCampos() {
 
-        event.preventDefault();
+        // Validação pendente
 
-        let numero = Number(ipt_numero.value)
-        let senha = ipt_senha.value
-        let confirmacao_senha = ipt_confirmacao_senha.value
+        // let numero = Number(ipt_numero.value)
+        // let senha = ipt_senha.value
+        // let confirmacao_senha = ipt_confirmacao_senha.value
 
-        const regexSenha = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-        const formulario = document.getElementById('form_registro');
 
-        if (!formulario.checkValidity()) {
-            formulario.reportValidity();
-            return;
-        }
+        // if (!Number.isInteger(numero)) {
+        //     alert("Insira um número de telefone celular válido.")
+        //     return
+        // }
 
-        if (!Number.isInteger(numero)) {
-            alert("Insira um número de telefone celular válido.")
-            return
-        }
 
-        if (!regexSenha.test(senha)) {
-            alert("A senha deve conter pelo menos:\n- Uma letra maiúscula\n- Uma letra minúscula\n- Um número\n- Um caractere especial (@$!%*?&)");
-            return;
-        }
+        // if (senha != confirmacao_senha) {
+        //     alert("As senhas não coincidem. Por favor, tente novamente.")
+        //     return
+        // }
 
-        if (senha != confirmacao_senha) {
-            alert("As senhas não coincidem. Por favor, tente novamente.")
-            return
-        }
-
-        alert("Cadastro finalizado com sucesso! Tente se autenticar com seu novo cadastro.")
-        window.location.href = "login.html";
+        // alert("Cadastro finalizado com sucesso! Tente se autenticar com seu novo cadastro.")
+        window.location = "login.html";
     }
 </script>
