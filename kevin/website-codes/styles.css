@@ -119,6 +119,7 @@ header{
 .aboutUs img{
     width: 100%;
     height: 600px;
+    border-radius: 20px;
 }
 
 .ourTeam{
@@ -321,7 +322,7 @@ footer img{
 .calculator{
     width: 100vw;
     display: flex;
-    height: 500px
+    height: 600px
 }
 
 .calculatorInformations{
@@ -331,6 +332,8 @@ footer img{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: justify;
+    gap: 20px;
 }
 
 .calculatorForm{
@@ -355,7 +358,7 @@ footer img{
     /* border: 1px solid green; */
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
 }
 
 .field{

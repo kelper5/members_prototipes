@@ -15,7 +15,7 @@ main{
     height: 100vh; 
     /* border: 1px solid red; */
     justify-content: center;
-    background-color: #1B301C;
+    background-color: #BCC3BA;
     display: flex;
 }
 .container{
@@ -36,7 +36,7 @@ main{
     align-items: center;
     gap: 100px;
     font-size: 1.3em;
-    background-color: rgba(77, 144, 80, 0.15);
+    background-color: #1B301C;
     box-shadow: 1.5px 1.5px 1.5px 1.5px #000;
 }
 
@@ -83,7 +83,7 @@ main{
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-    background-color: rgba(77, 144, 80, 0.15);
+    background-color: #1B301C;
     color: #fff;
     font-size: 1.3em;
     box-shadow: 1.5px 1.5px 1.5px 1.5px #000;
@@ -108,7 +108,7 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgba(77, 144, 80, 0.15);
+    background-color: #1B301C;
     box-shadow: 1.5px 1.5px 1.5px 1.5px #000;
 }
 
@@ -163,7 +163,7 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgba(77, 144, 80, 0.15);
+    background-color: #1B301C;
     border-radius: 20px;
     box-shadow: 1.5px 1.5px 1.5px 1.5px #000;
 }

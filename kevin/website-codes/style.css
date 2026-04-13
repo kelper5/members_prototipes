@@ -6,13 +6,15 @@
     border: none;
     list-style-type: none;
     text-decoration: none;
+    font-family: sans-serif;
 }
 
 .container{
     width: 100vw;
     height: 100vh;
-    background-color:  #1B301C;
+    /* background-color:  #1B301C; */
     display: flex;
+    /* background-image: url(./img/fishes.jpg) ; */
 }
 
 .logo img{
@@ -27,6 +29,7 @@
     justify-content: center;
     align-items: center;
     gap: 20px;
+    background-color:  #1B301C;
 }
 
 .content h1{
