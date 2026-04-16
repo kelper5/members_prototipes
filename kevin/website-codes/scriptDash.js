@@ -7,9 +7,9 @@ new Chart(ctx, {
     datasets: [
       {
         label: 'Luminosidade',
-        data: [30000, 10000, 5000, 25000, 22000, 23000],
+        data: [5000, 15000, 23000, 23000, 15000, 5000],
         borderWidth: 1,
-        backgroundColor: '#ddd',
+        backgroundColor: '#3D8F40',
         borderColor: '#fff',
         tension: 0.5,
       },
@@ -41,15 +41,17 @@ new Chart(ctx, {
 const ctx2 = document.getElementById('graficoColuna');
 
 new Chart(ctx2, {
-  type: 'bar',
+  type: 'line',
   data: {
     labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
     datasets: [
       {
-        label: 'Temperatura',
-        data: [22, 24, 27, 23, 20, 18],
+        label: 'Luminosidade',
+        data: [29, 29.3, 29.2, 29.2, 29.2, 28.6],
         borderWidth: 1,
-        backgroundColor: '#ddd',
+        backgroundColor: '#3D8F40',
+        borderColor: '#fff',
+        tension: 0.5,
       },
     ]
   },

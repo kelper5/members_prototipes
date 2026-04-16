@@ -18,8 +18,8 @@
 }
 
 .logo img{
-    width: 300px;
-    height: 170px;
+    width: 320px;
+    height: 200px;
 }
 
 .content{
@@ -43,6 +43,7 @@
     gap: 30px;
     color: #fff;
 }
+
 .content form input{
     height: 40px;
     border-radius: 10px;
@@ -67,7 +68,7 @@
 }
 
 figure img{
-    width: 940px;
+    width: 50vw;
     height: 100vh;
 }
 

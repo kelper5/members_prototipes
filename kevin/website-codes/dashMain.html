@@ -1,66 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./dash.css">
     <title>Kelper - Dashboard</title>
 </head>
+
 <body>
     <header></header>
     <main>
         <div class="container">
             <div class="navBar">
-            <figure>
-                <img src="./img/LOGO.png" alt="">
-            </figure>
-            <ul>
-                <li><a href="./dashMain.html">Gráficos</a></li>
-                <li><a href="./dashViveiros.html">Viveiros</a></li>
-                <li><a href="./dashAlerts.html">Alertas</a></li>
-                <li><a href="">LOG OUT</a></li>
-            </ul>
-        </div>
-        <div class="content">
-            <div class="greeting">
-                <div class="greet">
-                    <p>Olá, user</p>
-                    <p>Bem-vindo a fazenda xxxxx</p>
-                </div>
-                <select name="" id="">
-                    <option value="">Viveiro 1</option>
-                </select>
+                <figure>
+                    <img src="./img/LOGO.png" alt="">
+                </figure>
+                <ul>
+                    <li>Menu</li>
+                    <li class="selected"><a href="./dashMain.html">Gráficos</a></li>
+                    <li><a href="./dashViveiros.html">Viveiros</a></li>
+                    <li><a href="./dashAlerts.html">Alertas</a></li>
+                    <li class="red"><a href="./login.html">LOG OUT</a></li>
+                </ul>
             </div>
-            <div class="graphSession">
-                <div class="kpi">
-                    <div class="kpiLum">
-                        <h3>Luminosidade</h3>
-                        <p>12.000 LUX</p>
+            <div class="content">
+                <div class="greeting">
+                    <div class="greet">
+                        <p>Olá, user</p>
+                        <p>Bem-vindo a fazenda xxxxx</p>
                     </div>
-                    <div class="kpiEutrofizacao">
-                        <h3>Risco de eutrofização</h3>
-                        <p>25%</p>
-                    </div>
-                    <div class="kpiStatusSensores">
-                        <h3>Sensores ativos</h3>
-                        <p>1/1</p>
-                    </div>
+                    <select name="" id="">
+                        <option value="">Viveiro 1</option>
+                    </select>
                 </div>
-                <div class="graphics">
-                    <div class="lumGraph">
-                        <canvas id="graficoLinha"></canvas>
+                <div class="graphSession">
+                    <div class="kpi">
+                        <div class="kpiLum">
+                            <h3>Luminosidade</h3>
+                            <p>12.000 LUX</p>
+                        </div>
+                        <div class="kpiEutrofizacao">
+                            <h3>Risco de eutrofização</h3>
+                            <p>25%</p>
+                        </div>
+                        <div class="kpiStatusSensores">
+                            <h3>Sensores ativos</h3>
+                            <p>1/1</p>
+                        </div>
                     </div>
-                    <div class="tempGraph">
-                        <canvas id="graficoColuna"></canvas>
+                    <div class="graphics">
+                        <div class="lumGraph">
+                            <canvas id="graficoLinha"></canvas>
+                        </div>
+                        <div class="tempGraph">
+                            <canvas id="graficoColuna"></canvas>
+                        </div>
+                        <div class="activesGraph"></div>
                     </div>
-                    <div class="activesGraph"></div>
                 </div>
             </div>
-        </div>
         </div>
     </main>
     <footer></footer>
 </body>
+
 </html>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="./scriptDash.js"></script>

@@ -1,50 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./dash.css">
     <title>Kelper - Dashboard</title>
 </head>
+
 <body>
     <header></header>
     <main>
         <div class="container">
             <div class="navBar">
-            <figure>
-                <img src="./img/LOGO.png" alt="">
-            </figure>
-            <ul>
-                <li><a href="./dashMain.html">Gráficos</a></li>
-                <li><a href="./dashViveiros.html">Viveiros</a></li>
-                <li><a href="./dashAlerts.html">Alertas</a></li>
-                <li><a href="">LOG OUT</a></li>
-            </ul>
-        </div>
+                <figure>
+                    <img src="./img/LOGO.png" alt="">
+                </figure>
+                <ul>
+                    <li>Menu</li>
+                    <li><a href="./dashMain.html">Gráficos</a></li>
+                    <li class="selected"><a href="./dashViveiros.html">Viveiros</a></li>
+                    <li><a href="./dashAlerts.html">Alertas</a></li>
+                    <li class="red"><a href="./login.html">LOG OUT</a></li>
+                </ul>
+            </div>
             <div class="content">
                 <div class="viveiros">
                     <div class="viveiro">
                         <h1>Viveiro 01</h1>
                         <div class="stats">
-                            <span>Temperatura: XX</span>
-                            <span>Luminosidade: XX</span>
-                            <span>Status: ATIVO</span>
+                            <span>Temperatura: 29C</span>
+                            <span>Luminosidade: 20.000</span>
+                            <span  class="green">Status: ATIVO</span>
                         </div>
                     </div>
                     <div class="viveiro">
                         <h1>Viveiro 02</h1>
                         <div class="stats">
-                            <span>Temperatura: XX</span>
-                            <span>Luminosidade: XX</span>
-                            <span>Status: ATIVO</span>
+                            <span>Temperatura: 29C</span>
+                            <span>Luminosidade: 20.000</span>
+                            <span  class="green">Status: ATIVO</span>
                         </div>
                     </div>
                     <div class="viveiro">
                         <h1>Viveiro 03</h1>
                         <div class="stats">
-                            <span>Temperatura: XX</span>
-                            <span>Luminosidade: XX</span>
-                            <span>Status: ATIVO</span>
+                            <span>Temperatura: 29C</span>
+                            <span>Luminosidade: 20.000</span>
+                            <span  class="green">Status: ATIVO</span>
                         </div>
                     </div>
                 </div>
@@ -54,6 +57,7 @@
     </main>
     <footer></footer>
 </body>
+
 </html>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="./scriptDash.js"></script>
