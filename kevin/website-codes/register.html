@@ -41,7 +41,7 @@
                     </div>
                     <div class="input">
                         <p>Confirmar senha</p>
-                        <input type="password" placeholder="********" id="ipt_conf_senha">
+                        <input type="password" placeholder="********" id="ipt_confirmacao_senha">
                     </div>
                 </div>
                 <div class="input">
@@ -65,25 +65,56 @@
 <script>
     function validarCampos() {
 
-        // Validação pendente
+        let nome = ipt_nome.value;
+        let sobrenome = ipt_sobrenome.value;
+        let email = ipt_email.value;
+        let cpf = ipt_cpf.value;
+        let senha = ipt_senha.value;
+        let confirmacao_senha = ipt_confirmacao_senha.value;
+        let codigo = ipt_codigo.value;
 
-        // let numero = Number(ipt_numero.value)
-        // let senha = ipt_senha.value
-        // let confirmacao_senha = ipt_confirmacao_senha.value
+        if (!nome || !sobrenome || !email || !cpf || !senha || !confirmacao_senha || !codigo) {
+            alert("Verifique se todos os campos de cadastro foram devidamente preenchidos.");
+            return;
+        }
 
+        if (nome.length <= 1) {
+            alert("O nome deve ter mais de um caractere.");
+            return;
+        }
 
-        // if (!Number.isInteger(numero)) {
-        //     alert("Insira um número de telefone celular válido.")
-        //     return
-        // }
+        if (sobrenome.length <= 1) {
+            alert("O sobrenome deve ter mais de um caractere.");
+            return;
+        }
 
+        if (nome.length + sobrenome.length > 50) {
+            alert("Peço que, por gentileza, abrevie seu(s) sobrenome(s)");
+            return;
+        }
 
-        // if (senha != confirmacao_senha) {
-        //     alert("As senhas não coincidem. Por favor, tente novamente.")
-        //     return
-        // }
+        if (email.length > 100 || email.includes(" ") || !email.includes("@") ||
+            !email.includes(".") || email.lastIndexOf(".") < email.lastIndexOf("@")) {
+            alert("Insira um endereço de e-mail válido.");
+            return;
+        }
 
-        // alert("Cadastro finalizado com sucesso! Tente se autenticar com seu novo cadastro.")
+        if (cpf.length != 11) {
+            alert("Insira um CPF válido.");
+            return;
+        }
+
+        if (senha.length < 8 || senha.length > 128) {
+            alert("A senha deve ter entre 8 e 128 caracteres.");
+            return;
+        }
+
+        if (senha != confirmacao_senha) {
+            alert("As senhas não coincidem.");
+            return;
+        }
+
+        alert("Cadastro finalizado com sucesso! Tente se autenticar com sua nova conta.");
         window.location = "login.html";
     }
 </script>
