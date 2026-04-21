@@ -93,3 +93,8 @@ figure img{
     padding-left: 10px;
 }
 
+.hover1:hover{
+    background-color: #3e8b41;
+    transition: 0.3s;
+}
+

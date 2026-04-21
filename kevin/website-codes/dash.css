@@ -253,3 +253,13 @@ main{
     align-items: center;
     justify-content: center;
 }
+
+.hover4:hover{
+    background-color: #8dc59441;
+    transition: 0.3s;
+}
+
+.hover5:hover{
+    background-color: #ff5454cc;
+    transition: 0.3s;
+}

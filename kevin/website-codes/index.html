@@ -13,14 +13,14 @@
         <header>
             <div class="navbar">
                 <figure>
-                    <img src="./img/LOGO.png" alt="">
+                    <a href="index.html"><img src="./img/LOGO.png" alt=""></a>
                 </figure>
                 <ul>
-                    <li>Sobre Nós</li>
-                    <li>Estimativas</li>
-                    <li>Produtos</li>
-                    <li>Contatos</li>
-                    <li><button><a href="./login.html">Login</a></button></li>
+                    <li class="hover3"><a href="#aboutUs">Sobre Nós</a></li>
+                    <li class="hover3"><a href="#calculatorForm">Estimativas</a></li>
+                    <li class="hover3"><a href="#product">Produtos</a></li>
+                    <li class="hover3"><a href="#contactUs">Contatos</a></li>
+                    <li><button class="hover1"><a href="./login.html">Login</a></button></li>
                 </ul>
             </div>
             <div class="impact">
@@ -37,7 +37,7 @@
                 </figure>
             </div>
             <div class="containerMain">
-                <div class="aboutUs">
+                <div class="aboutUs" id="aboutUs">
                     <h2>Quem Somos?</h2>
                     <p>— Uma iniciativa que conjuga técnica e experiência do dia a dia para agregar valor ao seu negócio
                     </p>
@@ -108,7 +108,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="calculatorForm">
+                    <div class="calculatorForm" id="calculatorForm">
                         <div class="calculatorInputs">
                             <div class="field-wrapper">
                                 <h3>• Sobre do Viveiro</h3>
@@ -158,14 +158,14 @@
                                 </div>
                             </div>
                             <div class="form-action">
-                                <button class="submit" onclick="calcular()">Analisar Cenário</button>
-                                <button class="clear" onclick="limpar()">Limpar</button>
+                                <button class="submit hover1" onclick="calcular()">Analisar Cenário</button>
+                                <button class="clear hover1" onclick="limpar()">Limpar</button>
                             </div>
                         </div>
                     </div>
 
                 </div>
-                <div class="product">
+                <div class="product" id="product">
                     <div class="product-info">
                         <div class="info">
                             <h3>Kelper-LDR</h3>
@@ -180,8 +180,8 @@
                                 surpresa e evitando gastos com perdas inesperadas.</p>
                         </div>
                         <div class="buttons">
-                            <button class="primaryColor">Adquirir</button>
-                            <button class="secundaryColor">Tabela de Preços</button>
+                            <button class="primaryColor hover1">Adquirir</button>
+                            <button class="secundaryColor hover2">Tabela de Preços</button>
                         </div>
                     </div>
                     <div class="product-images">
@@ -191,7 +191,7 @@
                         </figure>
                     </div>
                 </div>
-                <div class="contactUs">
+                <div class="contactUs" id="contactUs">
                     <div class="contactContent">
                         <form action="submit">
                             <div class="inputGroup">
@@ -206,7 +206,7 @@
                                 <p>Assunto</p>
                                 <input type="text">
                             </div>
-                            <button>Enviar</button>
+                            <button class="hover1">Enviar</button>
                         </form>
                         <figure>
                             <img src="./img/contactImg.png" alt="">
