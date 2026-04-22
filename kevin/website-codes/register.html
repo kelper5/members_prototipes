@@ -65,13 +65,17 @@
 <script>
     function validarCampos() {
 
+        let lista_empresas = []
+
         let nome = ipt_nome.value;
         let sobrenome = ipt_sobrenome.value;
+        let nome_completo = nome + " " + sobrenome
         let email = ipt_email.value;
         let cpf = ipt_cpf.value;
         let senha = ipt_senha.value;
         let confirmacao_senha = ipt_confirmacao_senha.value;
         let codigo = ipt_codigo.value;
+        let id_empresa;
 
         if (!nome || !sobrenome || !email || !cpf || !senha || !confirmacao_senha || !codigo) {
             alert("Verifique se todos os campos de cadastro foram devidamente preenchidos.");
@@ -88,7 +92,7 @@
             return;
         }
 
-        if (nome.length + sobrenome.length > 50) {
+        if (nome_completo.length > 50) {
             alert("Peço que, por gentileza, abrevie seu(s) sobrenome(s)");
             return;
         }
@@ -114,7 +118,65 @@
             return;
         }
 
+        // for (let i = 0; i < lista_empresas.length; i++) {
+        //     if (lista_empresas[i].codigo_ativacao == codigo) {
+        //         id_empresa = lista_empresas[i].id
+        //         console.log("Código de ativação válido.");
+        //         break;
+        //     } else {
+        //         alert("Código inválido");
+        //         return;
+        //     }
+        // }
+
+        // fetch("/usuarios/cadastrar", {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //     },
+        //     body: JSON.stringify({
+        //         nomeServer: nome_completo,
+        //         emailServer: email,
+        //         cpfServer: cpf,
+        //         senhaServer: senha,
+        //         idEmpresaVincularServer: id_empresa
+        //     }),
+        // }).then(function (resposta) {
+        //     console.log("resposta: ", resposta);
+
+        //     if (resposta.ok) {
+        //         alert("Cadastro finalizado com sucesso! Tente se autenticar com sua nova conta.");
+        //         window.location = "login.html";
+        //     } else {
+        //         throw "Houve um erro ao tentar realizar o cadastro!";
+        //     }
+        // })
+        //     .catch(function (resposta) {
+        //         console.log(`#ERRO: ${resposta}`);
+        //     });
+
+        // return false;
+
         alert("Cadastro finalizado com sucesso! Tente se autenticar com sua nova conta.");
         window.location = "login.html";
     }
+
+    // function listar() {
+    //     fetch("/empresas/listar", {
+    //         method: "GET",
+    //     })
+    //         .then(function (resposta) {
+    //             resposta.json().then((empresas) => {
+    //                 empresas.forEach((empresa) => {
+    //                     lista_empresas.push(empresa);
+
+    //                     console.log("lista_empresas")
+    //                     console.log(lista_empresas[0].codigo_ativacao)
+    //                 });
+    //             });
+    //         })
+    //         .catch(function (resposta) {
+    //             console.log(`#ERRO: ${resposta}`);
+    //         });
+    // }
 </script>
