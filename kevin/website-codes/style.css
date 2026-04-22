@@ -19,7 +19,7 @@
 
 .logo img{
     width: 320px;
-    height: 200px;
+    height: 220px;
 }
 
 .content{
@@ -96,5 +96,21 @@ figure img{
 .hover1:hover{
     background-color: #3e8b41;
     transition: 0.3s;
+}
+
+.exitBtn{
+    align-self: self-start;
+    padding-left: 30px;
+    margin-top: -200px;
+}
+
+.exitBtn a{
+    color: #fff;
+    width: 20px;
+}
+
+.exitBtn img{
+    color: #fff;
+    width: 50px;
 }
 
