@@ -254,6 +254,15 @@ main{
     justify-content: center;
 }
 
+.red{
+    background-color: #ff5454cc;
+    padding: 0px 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .hover4:hover{
     background-color: #8dc59441;
     transition: 0.3s;
@@ -262,4 +271,17 @@ main{
 .hover5:hover{
     background-color: #ff5454cc;
     transition: 0.3s;
+}
+
+.kpiViveiros{
+    border: 2px solid #3D8F40;
+    border-radius: 20px;
+    width: 200px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    color: #fff;
+    font-size: 1.3em;
 }
