@@ -17,13 +17,13 @@
             <form action="" class="login">
                 <div class="input">
                     <p>E-mail</p>
-                    <input type="email" placeholder="exemplo@gmail.com">
+                    <input type="email" placeholder="exemplo@gmail.com" id="ipt_email">
                 </div>
                 <div class="input">
                     <p>Senha</p>
-                    <input type="password" placeholder="********">
+                    <input type="password" placeholder="********" id="ipt_senha">
                 </div>
-                <button class="hover1">Entrar</button>
+                <button class="hover1" onclick="autenticar()">Entrar</button>
                 <div class="register-a">
                     <span>Não possui uma conta? </span><a href="register.html">Cadaste-se aqui!</a>
                 </div>
@@ -35,3 +35,14 @@
     </div>
 </body>
 </html>
+<script>
+    function autenticar() {
+        let email = ipt_email.value
+        let senha = ipt_senha.value
+        if (email == "andy@gmail.com" && senha == "123123123") {
+            window.location = "dashMain.html";
+        } else {
+            alert("Credenciais inválidas.")
+        }
+    }
+</script>
