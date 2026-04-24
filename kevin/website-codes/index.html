@@ -107,6 +107,9 @@
                             <p>— propriedade física que relaciona a massa de um material ao volume que ele ocupa.
                             </p>
                         </div>
+                        <div class="infoGroup">
+                            <div id="ipt_economia"></div>
+                        </div>
                     </div>
                     <div class="calculatorForm" id="calculatorForm">
                         <div class="calculatorInputs">
@@ -120,10 +123,6 @@
                                     <div class="field">
                                         <span>Comprimento (m)</span>
                                         <input id="inComprimento" type="number" min="0" name="comprimento">
-                                    </div>
-                                    <div class="field">
-                                        <span>Profundidade (m)</span>
-                                        <input id="inProfundidade" type="number" min="0" name="profundidade">
                                     </div>
                                 </div>
                             </div>
@@ -249,8 +248,6 @@
         // === Configuração Inicial === //
         let largura = Number(inLargura.value);              // largura do viveiro, em metros
         let comprimento = Number(inComprimento.value);      // comprimento do viveiro, em metros
-        let profundidade = Number(inProfundidade.value);    // profundidade do viveiro, em metros
-
 
         let qtdPeixes = Number(inPeixes.value);             // quantidade de peixes por viveiro
         let qtdViveiros = Number(inViveiros.value);         // quantidade de viveiros considerados
@@ -260,7 +257,7 @@
 
         let precoPeixe = Number(inPrecoPeixe.value);        // preço do quilo do peixe
         let precoRacao = Number(inPrecoRacao.value);        // preço do quilo da ração
-        let precoBaseKelper = 500;                          // preço base do Kelper (arbitrário)
+        let precoBaseKelper = 5000;                          // preço base do Kelper (arbitrário)
 
         // === Cálculos === //
         let risco = 0;                                      // risco base de eutrofização
@@ -376,42 +373,29 @@
         // ex: valorTotal       = R$ 1.000,00
         //     risco            = 0.50 (50%)
         //     valorPrejuizo    = R$ 500,00 (pois foi considerado que 50% dos peixes naquele viveiro morreram, portanto 50% do valor daquele viveiro foi perdido) 
+        console.log(valorLote)
+        console.log(custoRacao)
+        console.log(risco)
         let valorPrejuizo = (valorLote + custoRacao) * risco;
 
         // investimento total do sistema Kelper para instalar em todos os viveiros, em R$
         let investimentoKelper = precoBaseKelper * qtdViveiros;
 
         // quanto seria economizado pelo piscicultor, supondo que ele comprasse o Kelper, evitando o prejuizo previsto. em R$
+        console.log(valorPrejuizo)
         let economia = valorPrejuizo - investimentoKelper;
+        ipt_economia.innerHTML = `Utilizando a nossa solução, estimamos que você poderia economizar até R$${economia.toFixed(2)}`
 
         // === Exibição das Informações === //
-        inResponse.innerHTML = `
-            <h2>Resultados</h2>
-            <hr>
-            <p>Densidade: <span>${densidade.toFixed(2)}</span> peixes/m²</p>
-            <p>Biomassa: <span>${biomassaHa.toFixed(2)}</span> kg/ha</p>
-            <p>Carga de Ração: <span>${racaoHa.toFixed(2)}</span>  kg/ha/dia</p>
-            <hr>
-            <p>Chance de Eutrofização: <span>${(risco * 100)}%</span></p>
-            <p>Valor Total em Risco: <span>R$ ${valorPrejuizo.toFixed(2)}</span></p>
-            <p>Investimento Kelper (${qtdViveiros} viveiros): <span>R$ ${investimentoKelper.toFixed(2)}</span></p>
-            <hr>
-            <h4 style="color: ${economia >= 0 ? "green" : "red"};">Economia Estimada: R$ ${economia.toFixed(2)}</h4>
-        `;
     }
 
     function limpar() {
-        inResponse.innerHTML = '';
-
         inLargura.value = "";
         inComprimento.value = "";
-        inProfundidade.value = "";
         inPeixes.value = "";
         inViveiros.value = "";
-        // inRacao.value = "";
         inPeso.value = "";
         inPrecoPeixe.value = "";
         inPrecoRacao.value = "";
-        inResponse.innerHTML = "";
     }
 </script>
