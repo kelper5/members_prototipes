@@ -370,6 +370,7 @@ footer img{
 .field input{
     width: 200px;
     border-radius: 10px;
+    padding-left: 10px;
 }
 
 .form-action{
