@@ -3,11 +3,11 @@ const ctx = document.getElementById('graficoLinha');
 new Chart(ctx, {
   type: 'line',
   data: {
-    labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+    labels: ['00:00','02:00','04:00','06:00','08:00','10:00','12:00', '14:00', '16:00', '18:00', '20:00', '22:00'],
     datasets: [
       {
         label: 'Luminosidade',
-        data: [5000, 15000, 23000, 23000, 15000, 5000],
+        data: [0, 0, 0, 200, 8000, 20000, 40000, 45000, 25000, 5000, 500, 0],
         borderWidth: 1,
         backgroundColor: '#3D8F40',
         borderColor: '#fff',
@@ -43,11 +43,11 @@ const ctx2 = document.getElementById('graficoColuna');
 new Chart(ctx2, {
   type: 'line',
   data: {
-    labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+    labels: ['00:00','02:00','04:00','06:00','08:00','10:00','12:00', '14:00', '16:00', '18:00', '20:00', '22:00'],
     datasets: [
       {
-        label: 'Luminosidade',
-        data: [29, 29.3, 29.2, 29.2, 29.2, 28.6],
+        label: 'Temperatura',
+        data: [22, 21, 20, 19, 22, 26, 30, 31, 29, 26, 24, 23],
         borderWidth: 1,
         backgroundColor: '#3D8F40',
         borderColor: '#fff',
@@ -57,8 +57,12 @@ new Chart(ctx2, {
   },
   options: {
     scales: {
-      y: {
-        beginAtZero: true,
+      x: {
+        title: {
+          display: true,
+          text: 'Horário',
+          color: '#fff'
+        },
         ticks: {
           color: '#fff'
         },
@@ -66,7 +70,13 @@ new Chart(ctx2, {
           color: '#000'
         }
       },
-      x: {
+      y: {
+        beginAtZero: true,
+        title: {
+          display: true,
+          text: 'Temperatura (°C)',
+          color: '#fff'
+        },
         ticks: {
           color: '#fff'
         },
