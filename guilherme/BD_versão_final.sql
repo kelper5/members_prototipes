@@ -39,7 +39,7 @@ INSERT INTO empresa
                         (3, 'Pernanbucanos', '34237752000345', 2, 3, '7635482571', default, default, '567257'),
                         (4, 'Samsungue', '56754336000490', 3, 4, '9863246467', default, default, '547248'),
                         (5, 'Microhard', '87659564000578', 4, 5, '0926735678', default, default, '963783');
-                        /*(1, 'maça', '12.345.678/0001-21', NULL, 1, '1234567891', default, default, '12356'),*/
+                        
 
 
 CREATE TABLE usuario (
