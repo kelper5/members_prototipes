@@ -7,6 +7,7 @@ CREATE TABLE empresa (
     razao_social VARCHAR(50) NOT NULL,
     cnpj CHAR(14) NOT NULL UNIQUE,
     email VARCHAR(50) NOT NULL UNIQUE,
+    senha VARCHAR(128) NOT NULL,
     codigo_ativacao VARCHAR (50) NOT NULL UNIQUE,
 	fk_matriz INT, 
     CONSTRAINT fk_matriz FOREIGN KEY (fk_matriz) REFERENCES empresa(id)
@@ -18,7 +19,7 @@ CREATE TABLE usuario (
     nome VARCHAR(50) NOT NULL,
     cpf CHAR(11),
     email VARCHAR(50) NOT NULL UNIQUE,
-    senha VARCHAR(50) NOT NULL,
+    senha VARCHAR(128) NOT NULL,
     fk_empresa INT NOT NULL,
     CONSTRAINT fk_usuario_empresa FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
 );
