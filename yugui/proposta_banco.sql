@@ -1,10 +1,12 @@
+DROP DATABASE IF EXISTS kelper;
 CREATE DATABASE kelper;
 USE kelper;
                       
 CREATE TABLE empresa (
     id INT PRIMARY KEY AUTO_INCREMENT,
     razao_social VARCHAR(50) NOT NULL,
-    cnpj CHAR(14) NOT NULL UNIQUE, 
+    cnpj CHAR(14) NOT NULL UNIQUE,
+    email VARCHAR(50) NOT NULL UNIQUE,
     codigo_ativacao VARCHAR (50) NOT NULL UNIQUE,
 	fk_matriz INT, 
     CONSTRAINT fk_matriz FOREIGN KEY (fk_matriz) REFERENCES empresa(id)
@@ -14,6 +16,7 @@ CREATE TABLE empresa (
 CREATE TABLE usuario (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(50) NOT NULL,
+    cpf CHAR(11),
     email VARCHAR(50) NOT NULL UNIQUE,
     senha VARCHAR(50) NOT NULL,
     fk_empresa INT NOT NULL,
@@ -27,7 +30,7 @@ CREATE TABLE viveiro (
     CONSTRAINT fk_viveiro_empresa FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
 );
                  	
-CREATE TABLE medida (
+CREATE TABLE captura (
     id INT PRIMARY KEY AUTO_INCREMENT,
 	temperatura DECIMAL(3, 1) NOT NULL,
     luminosidade DECIMAL(7, 1) NOT NULL,
