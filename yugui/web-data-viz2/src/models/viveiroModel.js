@@ -1,16 +1,16 @@
 var database = require("../database/config");
 
-function buscarViveirosPorEmpresa(empresaId) {
+function buscarViveirosPorEmpresa(fk_empresa) {
 
-  var instrucaoSql = `SELECT * FROM viveiro a WHERE fk_empresa = ${empresaId}`;
+  var instrucaoSql = `SELECT * FROM viveiro WHERE fk_empresa = ${fk_empresa}`;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
 }
 
-function cadastrar(empresaId, descricao) {
+function cadastrar(biomassa, fk_empresa) {
   
-  var instrucaoSql = `INSERT INTO (descricao, fk_empresa) viveiro VALUES (${descricao}, ${empresaId})`;
+  var instrucaoSql = `INSERT INTO viveiro (biomassa, fk_empresa) VALUES (${biomassa}, ${fk_empresa})`;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
