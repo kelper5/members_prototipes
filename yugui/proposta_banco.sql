@@ -8,7 +8,7 @@ CREATE TABLE empresa (
     cnpj CHAR(14) NOT NULL UNIQUE,
     email VARCHAR(50) NOT NULL UNIQUE,
     senha VARCHAR(128) NOT NULL,
-    codigo_ativacao VARCHAR (50) NOT NULL UNIQUE,
+    codigo_ativacao VARCHAR (50) UNIQUE,
 	fk_matriz INT, 
     CONSTRAINT fk_matriz FOREIGN KEY (fk_matriz) REFERENCES empresa(id)
     ON DELETE SET NULL
@@ -17,7 +17,7 @@ CREATE TABLE empresa (
 CREATE TABLE usuario (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(50) NOT NULL,
-    cpf CHAR(11),
+    cpf CHAR(11) NOT NULL,
     email VARCHAR(50) NOT NULL UNIQUE,
     senha VARCHAR(128) NOT NULL,
     fk_empresa INT NOT NULL,
