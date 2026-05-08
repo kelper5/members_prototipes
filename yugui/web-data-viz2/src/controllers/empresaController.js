@@ -23,8 +23,12 @@ function buscarPorId(req, res) {
 }
 
 function cadastrar(req, res) {
-  var cnpj = req.body.cnpj;
-  var razaoSocial = req.body.razaoSocial;
+  const cnpj = req.body.cnpj;
+  const razao_social = req.body.razao_social;
+  const email = req.body.email;
+  const senha = req.body.senha;
+  const fk_matriz = req.body.fk_matriz;
+
 
   empresaModel.buscarPorCnpj(cnpj).then((resultado) => {
     if (resultado.length > 0) {
@@ -32,7 +36,7 @@ function cadastrar(req, res) {
         .status(401)
         .json({ mensagem: `a empresa com o cnpj ${cnpj} já existe` });
     } else {
-      empresaModel.cadastrar(razaoSocial, cnpj).then((resultado) => {
+      empresaModel.cadastrar(razao_social, cnpj, email, senha, fk_matriz).then((resultado) => {
         res.status(201).json(resultado);
       });
     }

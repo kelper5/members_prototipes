@@ -1,9 +1,9 @@
 var usuarioModel = require("../models/usuarioModel");
-var aquarioModel = require("../models/viveiroModel");
+var viveiroModel = require("../models/viveiroModel");
 
 function autenticar(req, res) {
-    var email = req.body.emailServer;
-    var senha = req.body.senhaServer;
+    const email = req.body.email_server;
+    const senha = req.body.senha_server;
 
     if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
@@ -20,13 +20,13 @@ function autenticar(req, res) {
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
 
-                        aquarioModel.buscarViveirosPorEmpresa(resultadoAutenticar[0].idEmpresa)
+                        viveiroModel.buscarViveirosPorEmpresa(resultadoAutenticar[0].fk_empresa)
                             .then((resultadoViveiros) => {
                                 if (resultadoViveiros.length > 0) {
                                     res.json({
-                                        id: resultadoAutenticar[0].idUsuario,
+                                        id: resultadoAutenticar[0].id,
                                         email: resultadoAutenticar[0].email,
-                                        nome: resultadoAutenticar[0].nome_usuario,
+                                        nome: resultadoAutenticar[0].nome,
                                         senha: resultadoAutenticar[0].senha,
                                         viveiros: resultadoViveiros
                                     });
@@ -53,11 +53,11 @@ function autenticar(req, res) {
 
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    var nome = req.body.nomeServer;
-    var email = req.body.emailServer;
-    var cpf = req.body.cpfServer;
-    var senha = req.body.senhaServer;
-    var fkEmpresa = req.body.idEmpresaVincularServer;
+    const nome = req.body.nome_server;
+    const cpf = req.body.cpf_server;
+    const email = req.body.email_server;
+    const senha = req.body.senha_server;
+    const fk_empresa = req.body.fk_empresa_server;
 
     // Faça as validações dos valores
     if (nome == undefined) {
@@ -66,14 +66,14 @@ function cadastrar(req, res) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
-    } else if (fkEmpresa == undefined) {
+    } else if (fk_empresa == undefined) {
         res.status(400).send("Sua empresa a vincular está undefined!");
     }else if(cpf == undefined){
         res.status(400).send("Seu cpf está undefined!");
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, email, cpf, senha, fkEmpresa)
+        usuarioModel.cadastrar(nome, cpf, email, senha, fk_empresa)
             .then(
                 function (resultado) {
                     res.json(resultado);
