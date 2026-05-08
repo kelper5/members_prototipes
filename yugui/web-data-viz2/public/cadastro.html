@@ -46,7 +46,7 @@
         </div>
         <div class="input">
           <p>Código de ativação</p>
-          <input id="ipt_codigo" type="text" placeholder="ABC123" id="ipt_codigo">
+          <input type="text" placeholder="ABC123" id="ipt_codigo_ativacao">
         </div>
 
         <button type="button" onclick="validarCampos()" class="hover1">Registrar</button>
@@ -67,17 +67,17 @@
   function validarCampos() {
 
 
-    let nome = ipt_nome.value;
-    let sobrenome = ipt_sobrenome.value;
-    let nome_completo = nome + " " + sobrenome
-    let email = ipt_email.value;
-    let cpf = ipt_cpf.value;
-    let senha = ipt_senha.value;
-    let confirmacao_senha = ipt_confirmacao_senha.value;
-    let codigo = ipt_codigo.value;
+    const nome = ipt_nome.value;
+    const sobrenome = ipt_sobrenome.value;
+    const nome_completo = nome + " " + sobrenome
+    const email = ipt_email.value;
+    const cpf = ipt_cpf.value;
+    const senha = ipt_senha.value;
+    const confirmacao_senha = ipt_confirmacao_senha.value;
+    const codigo_ativacao = ipt_codigo_ativacao.value;
     let id_empresa;
 
-    if (!nome || !sobrenome || !email || !cpf || !senha || !confirmacao_senha || !codigo) {
+    if (!nome || !sobrenome || !email || !cpf || !senha || !confirmacao_senha || !codigo_ativacao) {
       alert("Verifique se todos os campos de cadastro foram devidamente preenchidos.");
       return;
     }
@@ -97,7 +97,7 @@
       return;
     }
 
-    if (email.length > 100 || email.includes(" ") || !email.includes("@") ||
+    if (email.length > 50 || email.includes(" ") || !email.includes("@") ||
       !email.includes(".") || email.lastIndexOf(".") < email.lastIndexOf("@")) {
       alert("Insira um endereço de e-mail válido.");
       return;
@@ -108,8 +108,8 @@
       return;
     }
 
-    if (senha.length < 8 || senha.length > 128) {
-      alert("A senha deve ter entre 8 e 128 caracteres.");
+    if (senha.length < 8 || senha.length > 50) {
+      alert("A senha deve ter entre 8 e 50 caracteres.");
       return;
     }
 
@@ -119,8 +119,8 @@
     }
 
     for (let i = 0; i < lista_empresas.length; i++) {
-      if (lista_empresas[i].codigo == codigo) {
-        id_empresa = lista_empresas[i].idEmpresa
+      if (lista_empresas[i].codigo_ativacao == codigo_ativacao) {
+        id_empresa = lista_empresas[i].id
         console.log("Código de ativação válido.");
         break;
       }
@@ -132,11 +132,11 @@
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        nomeServer: nome_completo,
-        emailServer: email,
-        cpfServer: cpf,
-        senhaServer: senha,
-        idEmpresaVincularServer: id_empresa
+        nome_server: nome_completo,
+        cpf_server: cpf,
+        email_server: email,
+        senha_server: senha,
+        fk_empresa_server: id_empresa
       }),
     }).then(function (resposta) {
       console.log("resposta: ", resposta);
@@ -168,7 +168,7 @@
             lista_empresas.push(empresa);
 
             console.log("lista_empresas")
-            console.log(lista_empresas[0].codigo)
+            console.log(lista_empresas[0].codigo_ativacao)
           });
         });
       })
