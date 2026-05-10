@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/alertViveiros.css">
+    <title>Kelper - Dashboard</title>
+</head>
+
+<body onload="exibirViveiros()">
+    <header></header>
+    <main>
+        <div class="container">
+            <div class="navBar">
+                <figure>
+                    <img src="./img/LOGO.png" alt="">
+                </figure>
+                <ul>
+                    <li>Menu</li>
+                    <a href="dashMain.html" class="hover4"><li >Gráficos</li></a>
+                    <a href="dashViveiros.html" class="selected"><li>Viveiros</li></a>
+                    <a href="dashAlerts.html" class="hover4"><li>Alertas</li></a>
+                    <a href="login.html" class="red hover5"><li>LOG OUT</li></a>
+                </ul>
+            </div>
+            <div class="content">
+                <div class="viveiros" id="insertCards">
+                    <div class="kpiViveiros"><p>Viveiros Ativos: 2/3</p></div>
+                    
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
+    <footer></footer>
+</body>
+
+</html>
+
+<script>
+    function exibirViveiros() {
+        console.log(sessionStorage.VIVEIROS)
+        JSON.parse(sessionStorage.VIVEIROS).forEach(item => {
+            document.getElementById("insertCards").innerHTML += 
+                    `
+                    <div class="viveiro">
+                        <h1>${item.nome}</h1>
+                        <div class="stats">
+                            <span>Temperatura: 29C</span>
+                            <span>Luminosidade: 20.000</span>
+                            <span  class="green">Status: ATIVO</span>
+                        </div>
+                    </div>
+                    `
+        });
+    }
+</script>

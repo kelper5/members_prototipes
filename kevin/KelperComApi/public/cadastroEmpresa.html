@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span>Razão Social</span><input type="text" id="razao_social_input">
+    <br>
+    <span>CNPJ</span><input type="text" id="cnpj_input">
+    <br>
+    <span>Nome da empresa matriz (se houver)</span><input type="text" id="matriz_input">
+    <br>
+    <span>Código autenticação</span><input type="text" id="codigo_input">
+    <br>
+    <hr>
+    <br>
+    <span>CEP da empresa</span><input type="text" id="endereco_input">
+    <br>
+    <span>Numero</span><input type="text" id="numero_endereco_input">
+    <button onclick="cadastrar()">Cadastrar</button>
+</body>
+</html>
+<script>
+
+  async function cadastrar() {
+
+    var razaoSocialVar = razao_social_input.value;
+    var cnpjVar = cnpj_input.value;
+    var matrizVar = matriz_input.value;
+    var enderecoVar = endereco_input.value;
+    var numeroEnderecoVar = numero_endereco_input.value;
+    var codigoVar = codigo_input.value
+
+    if (
+        razaoSocialVar == "" ||
+        cnpjVar == "" ||
+        enderecoVar == "" ||
+        numeroEnderecoVar == "" ||
+        codigoVar == ""
+    ) {
+        cardErro.style.display = "block";
+        mensagem_erro.innerHTML =
+            "Preencha todos os campos";
+        return false;
+    }
+
+    try {
+        const respostaEndereco =
+            await fetch("/enderecos/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    cepServer: enderecoVar
+                }),
+            });
+
+        if (!respostaEndereco.ok) {
+            throw "Erro ao cadastrar endereço";
+        }
+
+        const enderecoInfos = await respostaEndereco.json();
+        const idEndereco = enderecoInfos.insertId;
+        const respostaEmpresa =
+            await fetch("/empresas/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    razaoSocialServer: razaoSocialVar,
+                    cnpjServer: cnpjVar,
+                    matrizServer: matrizVar,
+                    fkEnderecoServer: idEndereco,
+                    numeroEnderecoServer: numeroEnderecoVar,
+                    codigoServer: codigoVar
+                }),
+            });
+
+        if (!respostaEmpresa.ok) {
+            throw "Erro ao cadastrar empresa";
+        }
+        console.log("Empresa cadastrada");
+    } catch (erro) {
+        console.log(erro);
+    }
+}
+
+</script>
