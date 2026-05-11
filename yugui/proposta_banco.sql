@@ -1,16 +1,24 @@
 DROP DATABASE IF EXISTS kelper;
 CREATE DATABASE kelper;
 USE kelper;
+
+CREATE TABLE endereco (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    cep CHAR(8) NOT NULL
+);
                       
 CREATE TABLE empresa (
     id INT PRIMARY KEY AUTO_INCREMENT,
     razao_social VARCHAR(50) NOT NULL,
-    cnpj CHAR(14) NOT NULL UNIQUE,
-    email VARCHAR(50) NOT NULL UNIQUE,
-    senha VARCHAR(128) NOT NULL,
-    codigo_ativacao VARCHAR (50) UNIQUE,
-	fk_matriz INT, 
-    CONSTRAINT fk_matriz FOREIGN KEY (fk_matriz) REFERENCES empresa(id)
+    cnpj CHAR(14) NOT NULL UNIQUE, 
+    codigo_ativacao VARCHAR (50) NOT NULL UNIQUE,
+    fk_matriz INT NULL,
+    fk_endereco INT NOT NULL,
+    complemento_imovel VARCHAR(10) NOT NULL,
+    criado_em DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    atualizado_em DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    FOREIGN KEY (fk_matriz) REFERENCES empresa(id),
+    FOREIGN KEY (fk_endereco) REFERENCES endereco(id)
     ON DELETE SET NULL
 );
 
@@ -18,34 +26,46 @@ CREATE TABLE usuario (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(50) NOT NULL,
     cpf CHAR(11) NOT NULL,
-    email VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
     senha VARCHAR(128) NOT NULL,
     fk_empresa INT NOT NULL,
-    CONSTRAINT fk_usuario_empresa FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
+    criado_em DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    atualizado_em DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
 );
-                         
+
 CREATE TABLE viveiro (
     id INT PRIMARY KEY AUTO_INCREMENT,
-	biomassa INT NOT NULL,
+    nome VARCHAR(50) NOT NULL,
+    biomassa_media DECIMAL(6, 2) NOT NULL,
     fk_empresa INT NOT NULL,
-    CONSTRAINT fk_viveiro_empresa FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
+    criado_em DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    atualizado_em DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
 );
-                 	
+
+CREATE TABLE arduino (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    fk_viveiro INT NOT NULL,
+    status_arduino BOOLEAN DEFAULT TRUE NOT NULL,
+    criado_em DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    atualizado_em DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    FOREIGN KEY (fk_viveiro) REFERENCES viveiro(id)
+);
+
 CREATE TABLE captura (
     id INT PRIMARY KEY AUTO_INCREMENT,
-	temperatura DECIMAL(3, 1) NOT NULL,
+    temperatura DECIMAL(3, 1) NOT NULL,
     luminosidade DECIMAL(7, 1) NOT NULL,
-	momento DATETIME DEFAULT CURRENT_TIMESTAMP,
-    status_arduino BOOLEAN DEFAULT TRUE,
-	fk_viveiro INT NOT NULL,
-    CONSTRAINT fk_medida_viveiro FOREIGN KEY (fk_viveiro) REFERENCES viveiro(id)
+    fk_arduino INT NOT NULL,
+    criado_em DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    FOREIGN KEY (fk_arduino) REFERENCES arduino(id)
 );
 
 CREATE TABLE aviso (
 	id INT PRIMARY KEY AUTO_INCREMENT,		
-	createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,	
-	nivel_risco VARCHAR(10),
+	nivel_risco DECIMAL(4, 2) NOT NULL,
 	fk_usuario INT NOT NULL,
-	CONSTRAINT chk_nivel_risco CHECK(nivel_risco in ("Moderado", "Grave")),
-    CONSTRAINT fk_aviso_usuario FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
+	criado_em DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
  );
