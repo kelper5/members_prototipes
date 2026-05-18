@@ -18,6 +18,7 @@ function buscarViveirosPorEmpresa(req, res) {
 
 
 function cadastrar(req, res) {
+  const nome = req.body.biomassa;
   const biomassa = req.body.biomassa;
   const fk_empresa = req.body.fk_empresa;
 
@@ -25,10 +26,12 @@ function cadastrar(req, res) {
     res.status(400).send("biomassa está undefined!");
   } else if (fk_empresa == undefined) {
     res.status(400).send("fk_empresa está undefined!");
+  } else if (nome == undefined) {
+    res.status(400).send("nome está undefined!"); 
   } else {
 
 
-    viveiroModel.cadastrar(biomassa, fk_empresa)
+    viveiroModel.cadastrar(nome, biomassa, fk_empresa)
       .then((resultado) => {
         res.status(201).json(resultado);
       }
