@@ -4,7 +4,7 @@ USE kelper;
 
 CREATE TABLE endereco (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    cep CHAR(8) NOT NULL
+    cep CHAR(8) NOT NULL UNIQUE
 );
                       
 CREATE TABLE empresa (
