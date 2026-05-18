@@ -7,7 +7,7 @@ function buscarPorId(id) {
 }
 
 function listar() {
-  var instrucaoSql = `SELECT cep FROM endereco`;
+  var instrucaoSql = `SELECT id, cep FROM endereco`;
 
   return database.executar(instrucaoSql);
 }
@@ -18,4 +18,4 @@ function cadastrar(cep) {
   return database.executar(instrucaoSql);
 }
 
-module.exports = { buscarPorId, cadastrar};
+module.exports = { buscarPorId, listar, cadastrar};
