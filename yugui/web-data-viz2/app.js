@@ -21,6 +21,7 @@ var avisosRouter = require("./src/routes/avisos");
 var capturasRouter = require("./src/routes/capturas");
 var viveirosRouter = require("./src/routes/viveiros");
 var empresasRouter = require("./src/routes/empresas");
+var enderecosRouter = require("./src/routes/enderecos");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -34,6 +35,7 @@ app.use("/avisos", avisosRouter);
 app.use("/capturas", capturasRouter);
 app.use("/viveiros", viveirosRouter);
 app.use("/empresas", empresasRouter);
+app.use("/enderecos", enderecosRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`
