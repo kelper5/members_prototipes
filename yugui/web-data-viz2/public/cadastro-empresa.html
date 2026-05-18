@@ -37,6 +37,8 @@
         var enderecoVar = endereco_input.value;
         var numeroEnderecoVar = numero_endereco_input.value;
         var codigoVar = codigo_input.value
+        let id_endereco;
+        let cep_existente = false;
 
         if (
             razaoSocialVar == "" ||
@@ -51,24 +53,39 @@
             return false;
         }
 
-        try {
-            const respostaEndereco =
-                await fetch("/enderecos/cadastrar", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        cepServer: enderecoVar
-                    }),
-                });
-
-            if (!respostaEndereco.ok) {
-                throw "Erro ao cadastrar endereço";
+        for (let i = 0; i < lista_enderecos.length; i++) {
+            if (lista_enderecos[i].cep == enderecoVar) {
+                id_endereco = lista_enderecos[i].id
+                cep_existente = true;
+                break;
             }
+        }
 
-            const enderecoInfos = await respostaEndereco.json();
-            const idEndereco = enderecoInfos.insertId;
+        if (!cep_existente) {
+            try {
+                const respostaEndereco =
+                    await fetch("/enderecos/cadastrar", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            cepServer: enderecoVar
+                        }),
+                    });
+
+                if (!respostaEndereco.ok) {
+                    throw "Erro ao cadastrar endereço";
+                }
+                const enderecoInfos = await respostaEndereco.json();
+                id_endereco = enderecoInfos.insertId;
+            } catch (erro) {
+                console.log(erro);
+            }
+        }
+
+        try {
+
             const respostaEmpresa =
                 await fetch("/empresas/cadastrar", {
                     method: "POST",
@@ -76,12 +93,12 @@
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify({
-                        razaoSocialServer: razaoSocialVar,
-                        cnpjServer: cnpjVar,
-                        matrizServer: matrizVar,
-                        fkEnderecoServer: idEndereco,
-                        numeroEnderecoServer: numeroEnderecoVar,
-                        codigoServer: codigoVar
+                        razao_social_server: razaoSocialVar,
+                        cnpj_server: cnpjVar,
+                        codigo_ativacao_server: codigoVar,
+                        fk_matriz_server: matrizVar,
+                        fk_endereco_server: id_endereco,
+                        complemento_imovel_server: numeroEnderecoVar
                     }),
                 });
 
