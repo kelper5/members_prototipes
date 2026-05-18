@@ -58,8 +58,8 @@ CREATE TABLE sensor_leitura(
     temperatura DECIMAL(3, 1) NOT NULL,
     luminosidade INT NOT NULL,
     createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
-    fkViveiro INT NOT NULL,
-    CONSTRAINT fk_Arduino FOREIGN KEY (fkViveiro) REFERENCES viveiro(id)
+    fkSensor INT NOT NULL,
+    CONSTRAINT fk_Arduino FOREIGN KEY (fkSensor) REFERENCES sensor(id)
 );
 -- COLOCAR DEPOIS
 CREATE TABLE alerta(
