@@ -17,8 +17,8 @@ CREATE TABLE empresa (
     complemento_imovel VARCHAR(10) NOT NULL,
     criado_em DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
     atualizado_em DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    FOREIGN KEY (fk_matriz) REFERENCES empresa(id),
-    FOREIGN KEY (fk_endereco) REFERENCES endereco(id)
+    FOREIGN KEY (fk_endereco) REFERENCES endereco(id),
+    FOREIGN KEY (fk_matriz) REFERENCES empresa(id)
     ON DELETE SET NULL
 );
 
