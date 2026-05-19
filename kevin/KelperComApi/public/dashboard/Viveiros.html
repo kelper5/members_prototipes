@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/dash.css">
+    <title>Kelper - Dashboard</title>
+</head>
+
+<body>
+    <header></header>
+    <main>
+        <div class="container">
+            <div class="navBar">
+                <figure>
+                    <img src="../assets/img/LOGO.png" alt="">
+                </figure>
+                <ul>
+                    <li>Menu</li>
+                    <a href="alertas.html" class="hover4">
+                        <li>Alertas</li>
+                    </a>
+                    <a href="Viveiros.html" class="selected">
+                        <li>Viveiros</li>
+                    </a>
+                    <a href="dashboard.html" class="hover4">
+                        <li>Gráficos</li>
+                    </a>
+                    <a href="cadastroViveiro.html" class="hover4">
+                        <li>Cadastrar Viveiro</li>
+                    </a>
+                    <a href="../login.html" class="red hover5">
+                        <li>LOG OUT</li>
+                    </a>
+                </ul>
+            </div>
+            <div class="content">
+                <div class="viveiros">
+                    <div class="kpiViveiros">
+                        <p>Viveiros Ativos: 2/3</p>
+                    </div>
+                    <div class="alertass">
+                        <div class="viveiro">
+                            <h1>Viveiro 01</h1>
+                            <div class="stats">
+                                <span>Temperatura: 29C</span>
+                                <span>Luminosidade: 20.000</span>
+                                <span class="green">Status: ATIVO</span>
+                            </div>
+                        </div>
+                        <div class="viveiro">
+                            <h1>Viveiro 02</h1>
+                            <div class="stats">
+                                <span>Temperatura: 29C</span>
+                                <span>Luminosidade: 20.000</span>
+                                <span class="green">Status: ATIVO</span>
+                            </div>
+                        </div>
+                        <div class="viveiro">
+                            <h1>Viveiro 03</h1>
+                            <div class="stats">
+                                <span>Temperatura: 29C</span>
+                                <span>Luminosidade: 20.000</span>
+                                <span class="red">Status: INATIVO</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
+    <footer></footer>
+</body>
+
+</html>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="./scriptDash.js"></script>
