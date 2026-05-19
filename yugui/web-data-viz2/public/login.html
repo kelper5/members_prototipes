@@ -23,7 +23,7 @@
                     <p>Senha</p>
                     <input type="password" placeholder="********" id="senha_input">
                 </div>
-                <button type="button" class="hover1" onclick="autenticar()">Entrar</button>
+                <button type="button" class="hover1" onclick="entrar()">Entrar</button>
                 <div class="register-a">
                     <span>Não possui uma conta? </span><a href="cadastro.html">Cadaste-se aqui!</a>
                 </div>
@@ -40,19 +40,19 @@
 
 
     function entrar() {
-        aguardar();
+        // aguardar();
 
         const email = email_input.value;
         const senha = senha_input.value;
 
         if (email == "" || senha == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
+            // cardErro.style.display = "block"
+            // mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            // finalizarAguardar();
             return false;
         }
         else {
-            setInterval(sumirMensagem, 5000)
+            // setInterval(sumirMensagem, 5000)
         }
 
         console.log("FORM LOGIN: ", email);
@@ -69,7 +69,7 @@
             })
         }).then(function (resposta) {
             console.log("ESTOU NO THEN DO entrar()!")
-
+            console.log(resposta)
             if (resposta.ok) {
                 console.log(resposta);
 
@@ -93,7 +93,7 @@
 
                 resposta.text().then(texto => {
                     console.error(texto);
-                    finalizarAguardar(texto);
+                    // finalizarAguardar(texto);
                 });
             }
 
@@ -104,8 +104,8 @@
         return false;
     }
 
-    function sumirMensagem() {
-        cardErro.style.display = "none"
-    }
+    // function sumirMensagem() {
+    //     cardErro.style.display = "none"
+    // }
 
 </script>
