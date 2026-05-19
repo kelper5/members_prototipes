@@ -42,10 +42,10 @@
     function entrar() {
         // aguardar();
 
-        const email = email_input.value;
-        const senha = senha_input.value;
+        const emailVar = email_input.value;
+        const senhaVar = senha_input.value;
 
-        if (email == "" || senha == "") {
+        if (emailVar == "" || senhaVar == "") {
             // cardErro.style.display = "block"
             // mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
             // finalizarAguardar();
@@ -55,8 +55,8 @@
             // setInterval(sumirMensagem, 5000)
         }
 
-        console.log("FORM LOGIN: ", email);
-        console.log("FORM SENHA: ", senha);
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
 
         fetch("/usuarios/autenticar", {
             method: "POST",
@@ -64,8 +64,8 @@
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                email_server: email,
-                senha_server: senha
+                email_server: emailVar,
+                senha_server: senhaVar
             })
         }).then(function (resposta) {
             console.log("ESTOU NO THEN DO entrar()!")
@@ -79,6 +79,7 @@
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.ID_EMPRESA = json.empresaId;
                     sessionStorage.VIVEIROS = JSON.stringify(json.viveiros)
 
                     setTimeout(function () {

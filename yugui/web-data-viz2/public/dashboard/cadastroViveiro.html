@@ -52,7 +52,7 @@
             const viveirosInfos = await respostaViveiro.json();
             const idViveiro = viveirosInfos.insertId;
             const respostaSensor =
-                await fetch("/sensores/cadastrar", {
+                await fetch("/arduinos/cadastrar", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

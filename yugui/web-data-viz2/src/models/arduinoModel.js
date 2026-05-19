@@ -8,9 +8,9 @@ function buscarArduinoPorViveiro(fk_viveiro) {
   return database.executar(instrucaoSql);
 }
 
-function cadastrar(fk_viveiro) {
+function cadastrar(idViveiro) {
   
-  var instrucaoSql = `INSERT INTO arduino (fk_viveiro) VALUES (${fk_viveiro})`;
+  var instrucaoSql = `INSERT INTO arduino (fk_viveiro) VALUES (${idViveiro})`;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
