@@ -40,15 +40,7 @@
             <div class="content">
                 <div class="viveiros" id="insertCards">
                     <div class="kpiViveiros">
-                        <p>Viveiros Ativos: 2/3</p>
-                    </div>
-                    <div class="viveiro">
-                        <h1>Viveiro Molde</h1>
-                        <div class="stats">
-                            <span>Temperatura: 29C</span>
-                            <span>Luminosidade: 20.000</span>
-                            <span class="green">Status: ATIVO</span>
-                        </div>
+                        <p>Viveiros Ativos: 2/<span id="viveirosTotaisOut"></span></p>
                     </div>
 
                 </div>
@@ -61,10 +53,14 @@
 </body>
 
 <script>
-
+    var viveirosTotais = 0
+    var viveirosAtivos = 0
+    console.log(viveirosTotais)
     function exibirViveiros() {
         console.log(sessionStorage.VIVEIROS)
+
         JSON.parse(sessionStorage.VIVEIROS).forEach(item => {
+            viveirosTotais ++
             document.getElementById("insertCards").innerHTML +=
                 `
                     <div class="viveiro">
@@ -77,6 +73,7 @@
                     </div>
                     `
         });
+        viveirosTotaisOut.innerHTML = viveirosTotais
     }
 
 </script>
