@@ -39,6 +39,7 @@
         var codigoVar = codigo_input.value
         let id_endereco;
         let cep_existente = false;
+        let fkMatriz = null
 
         if (
             razaoSocialVar == "" ||
@@ -51,6 +52,26 @@
             mensagem_erro.innerHTML =
                 "Preencha todos os campos";
             return false;
+        }
+
+        if (matrizVar != "") {
+
+            await fetch(`/empresas/buscar/${matrizVar}`, {
+                method: "GET",
+            })
+                .then(function (resposta) {
+                    if (!resposta.ok) {
+                        throw new Error("Empresa não encontrada");
+                    }
+                    return resposta.json();
+                })
+                .then((empresa) => {
+                    fkMatriz = empresa[0].id
+                })
+                .catch(function (erro) {
+                    console.log(`#ERRO: ${erro}`);
+                });
+
         }
 
         for (let i = 0; i < lista_enderecos.length; i++) {
@@ -85,7 +106,6 @@
         }
 
         try {
-
             const respostaEmpresa =
                 await fetch("/empresas/cadastrar", {
                     method: "POST",
@@ -96,7 +116,7 @@
                         razao_social_server: razaoSocialVar,
                         cnpj_server: cnpjVar,
                         codigo_ativacao_server: codigoVar,
-                        fk_matriz_server: matrizVar,
+                        fk_matriz_server: fkMatriz,
                         fk_endereco_server: id_endereco,
                         complemento_imovel_server: numeroEnderecoVar
                     }),
@@ -122,7 +142,7 @@
                         lista_enderecos.push(endereco);
 
                         console.log("lista_enderecos")
-                        console.log(lista_enderecos[0].cep)
+                        console.log(lista_enderecos[0].cep, lista_enderecos[0].id)
                     });
                 });
             })
