@@ -2,8 +2,8 @@ var usuarioModel = require("../models/usuarioModel");
 var viveiroModel = require("../models/viveiroModel");
 
 function autenticar(req, res) {
-    const email = req.body.email_server;
-    const senha = req.body.senha_server;
+    var email = req.body.email_server;
+    var senha = req.body.senha_server;
 
     if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
@@ -20,14 +20,15 @@ function autenticar(req, res) {
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
 
-                        viveiroModel.buscarViveirosPorEmpresa(resultadoAutenticar[0].fk_empresa)
+                        viveiroModel.buscarViveirosPorEmpresa(resultadoAutenticar[0].empresaId)
                             .then((resultadoViveiros) => {
-                                if (resultadoViveiros.length > 0) {
+                                if (resultadoViveiros.length >= 0) {
                                     res.json({
                                         id: resultadoAutenticar[0].id,
                                         email: resultadoAutenticar[0].email,
                                         nome: resultadoAutenticar[0].nome,
                                         senha: resultadoAutenticar[0].senha,
+                                        empresaId: resultadoAutenticar[0].empresaId,
                                         viveiros: resultadoViveiros
                                     });
                                 } else {

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>nome</p> <input type="text" id="nome_viveiro_input">
+    <p>biomassa</p><input type="text" id="biomassa_input">
+    <br>
+    <button onclick="cadastrar()">Cadastrar</button>
+</body>
+
+</html>
+<script>
+    async function cadastrar() {
+
+        var nomeVar = nome_viveiro_input.value;
+        var biomassaVar = biomassa_input.value;
+
+        if (
+            nomeVar == "" ||
+            biomassaVar == ""
+        ) {
+            cardErro.style.display = "block";
+            mensagem_erro.innerHTML =
+                "Preencha todos os campos";
+            return false;
+        }
+        console.log(sessionStorage.ID_EMPRESA)
+        try {
+            const respostaViveiro =
+                await fetch("/viveiros/cadastrar", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        nomeServer: nomeVar,
+                        biomassaServer: biomassaVar,
+                        fkEmpresaServer: sessionStorage.ID_EMPRESA
+                    }),
+                });
+
+            if (!respostaViveiro.ok) {
+                throw "Erro ao cadastrar viveiro";
+            }
+            console.log("Viveiro Cadastrado!");
+            const viveirosInfos = await respostaViveiro.json();
+            const idViveiro = viveirosInfos.insertId;
+            const respostaSensor =
+                await fetch("/arduinos/cadastrar", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        idViveiroServer: idViveiro,
+                    }),
+                });
+
+            if (!respostaSensor.ok) {
+                throw "Erro ao cadastrar sensor";
+            }
+            console.log("Sensor Cadastrado!");
+        } catch (erro) {
+            console.log(erro);
+        }
+    }
+</script>

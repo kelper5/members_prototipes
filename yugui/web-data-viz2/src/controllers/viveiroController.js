@@ -18,17 +18,20 @@ function buscarViveirosPorEmpresa(req, res) {
 
 
 function cadastrar(req, res) {
-  const biomassa = req.body.biomassa;
-  const fk_empresa = req.body.fk_empresa;
+  const nome = req.body.nomeServer;
+  const biomassa = req.body.biomassaServer;
+  const fk_empresa = req.body.fkEmpresaServer;
 
   if (biomassa == undefined) {
     res.status(400).send("biomassa está undefined!");
   } else if (fk_empresa == undefined) {
     res.status(400).send("fk_empresa está undefined!");
+  } else if (nome == undefined) {
+    res.status(400).send("nome está undefined!"); 
   } else {
 
 
-    viveiroModel.cadastrar(biomassa, fk_empresa)
+    viveiroModel.cadastrar(nome, biomassa, fk_empresa)
       .then((resultado) => {
         res.status(201).json(resultado);
       }

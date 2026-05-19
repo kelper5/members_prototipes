@@ -9,8 +9,7 @@
     <title>AquaTech | Tempo Real</title>
 
 
-    <link rel="stylesheet" href="./../css/dashboards.css">
-    <link rel="stylesheet" href="./../css/estilo.css" />
+    <link rel="stylesheet" href="./../css/alertViveiros.css">
 
     <script src="../js/sessao.js"></script>
     <script src="../js/alerta.js"></script>
@@ -20,96 +19,61 @@
         rel="stylesheet">
 </head>
 
-<body onload="validarSessao(), exibirAquarios(),  atualizacaoPeriodica()">
+<body onload="exibirViveiros()">
 
-    <div class="janela">
-
-        <div class="header-left dash-header">
-
-            <h1>AquaTech</h1>
-
-            <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+    <header></header>
+    <main>
+        <div class="container">
+            <div class="navBar">
+                <figure>
+                    <img src="./img/LOGO.png" alt="">
+                </figure>
+                <ul>
+                    <li>Menu</li>
+                    <li class="hover4"><a href="./dashMain.html">Gráficos</a></li>
+                    <li class="selected"><a href="./dashViveiros.html">Viveiros</a></li>
+                    <li class="hover4"><a href="./dashAlerts.html">Alertas</a></li>
+                    <li class="hover4"><a href="./cadastroViveiro.html">Cadastrar Viveiro</a></li>
+                    <li class="red hover5"><a href="./login.html">LOG OUT</a></li> <!-- TEM QUE LIMPAR SEssÃo -->
+                </ul>
             </div>
-
-            <div class="btn-nav">
-                <h3>Aquários</h3>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./dashboard.html">
-                    <h3>Gráficos</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./mural.html">
-                    <h3>Mural de Avisos</h3>
-                </a>
-            </div>
-
-            <div class="btn-logout" onclick="limparSessao()">
-                <h3>Sair</h3>
-            </div>
-
-        </div>
-
-        <div class="dash">
-            <div id="alerta">
-            </div>
-            <div class="area-parametros-alerta">
-                <p class="titulo-legenda">
-                    Legenda - Parâmetros para Alertas
-                </p>
-                <div class="parametros-alerta">
-                    <div class="item-regua perigo-frio">
-                        <p>Perigo</p>
-                        <p>&lt;=5°C</p>
+            <div class="content">
+                <div class="viveiros" id="insertCards">
+                    <div class="kpiViveiros">
+                        <p>Viveiros Ativos: 2/3</p>
                     </div>
-                    <div class="item-regua alerta-frio">
-                        <p>Alerta</p>
-                        <p>&lt;=10°C</p>
+                    <div class="viveiro">
+                        <h1>Viveiro Molde</h1>
+                        <div class="stats">
+                            <span>Temperatura: 29C</span>
+                            <span>Luminosidade: 20.000</span>
+                            <span class="green">Status: ATIVO</span>
+                        </div>
                     </div>
-                    <div class="item-regua ideal">
-                        <p>Ideal</p>
-                        <p>20°C</p>
-                    </div>
-                    <div class="item-regua alerta-quente">
-                        <p>Alerta</p>
-                        <p>&gt;=22°C</p>
-                    </div>
-                    <div class="item-regua perigo-quente">
-                        <p>Perigo</p>
-                        <p>&gt;=23°C</p>
-                    </div>
+
                 </div>
             </div>
-
-            <div class="cards" id="cardAquarios">
-
-            </div>
-
         </div>
-
-    </div>
+        </div>
+    </main>
+    <footer></footer>
 
 </body>
 
 <script>
 
-    function exibirAquarios() {
-        JSON.parse(sessionStorage.AQUARIOS).forEach(item => {
-            document.getElementById("cardAquarios").innerHTML += `
-                    <div class="card-aquario">
-                        <div class="title-aquario">
-                            <h1>${item.descricao}</h1>
+    function exibirViveiros() {
+        console.log(sessionStorage.VIVEIROS)
+        JSON.parse(sessionStorage.VIVEIROS).forEach(item => {
+            document.getElementById("insertCards").innerHTML +=
+                `
+                    <div class="viveiro">
+                        <h1>${item.nome}</h1>
+                        <div class="stats">
+                            <span>Temperatura: 29C</span>
+                            <span>Luminosidade: 20.000</span>
+                            <span  class="green">Status: ATIVO</span>
                         </div>
-                        <div class="desc-aquario">
-                        <div class="temperatura">
-                            <p id="temp_aquario_${item.id}">-°C</p>
-                        </div>
-                        <div class="cor-alerta" id="card_${item.id}"></div>
-                    </div>
                     </div>
                     `
         });
