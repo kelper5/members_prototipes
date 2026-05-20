@@ -11,4 +11,8 @@ router.get("/tempo-real/:fk_viveiro", function (req, res) {
     capturaController.buscarCapturasEmTempoReal(req, res);
 })
 
+router.get("/ultimosViveiro/:idArduino", function (req, res) {
+    capturaController.buscarCapturasParaTelaViveiros(req, res);
+})
+
 module.exports = router;

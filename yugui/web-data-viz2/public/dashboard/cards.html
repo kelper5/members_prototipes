@@ -40,7 +40,8 @@
             <div class="content">
                 <div class="viveiros" id="insertCards">
                     <div class="kpiViveiros">
-                        <p>Viveiros Ativos: 2/<span id="viveirosTotaisOut"></span></p>
+                        <p>Viveiros Ativos: <span id="viveirosAtivosOut"></span>/<span id="viveirosTotaisOut"></span>
+                        </p>
                     </div>
 
                 </div>
@@ -53,27 +54,71 @@
 </body>
 
 <script>
+
     var viveirosTotais = 0
     var viveirosAtivos = 0
-    console.log(viveirosTotais)
-    function exibirViveiros() {
+
+    async function exibirViveiros() {
         console.log(sessionStorage.VIVEIROS)
 
-        JSON.parse(sessionStorage.VIVEIROS).forEach(item => {
-            viveirosTotais ++
+        await JSON.parse(sessionStorage.VIVEIROS).forEach(async item => {
+            console.log("ITEM:");
+            console.log(item);
+
+            console.log("ID ARDUINO:");
+            console.log(item.idArduino);
+            viveirosTotais++
+            if (item.status_arduino == 1) {
+                viveirosAtivos++
+            }
+
+
+            let resposta = await fetch(`/capturas/ultimosViveiro/${item.idArduino}`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+
+            });
+
+            let respostaJson = await resposta.json()
+            var temperatura
+            var luminosidade
+            var situacao = "green"
+
+            if (respostaJson[0].temperatura != null) {
+                temperatura = respostaJson[0].temperatura
+            }else{
+                temperatura = 0
+            }
+
+            if (respostaJson[0].luminosidade != null) {
+                luminosidade = respostaJson[0].luminosidade
+            }else{
+                luminosidade = 0
+            }
+
+            if(respostaJson[0].status_arduino == 0){
+                situacao == red
+            }
+
             document.getElementById("insertCards").innerHTML +=
                 `
                     <div class="viveiro">
                         <h1>${item.nome}</h1>
                         <div class="stats">
-                            <span>Temperatura: 29C</span>
-                            <span>Luminosidade: 20.000</span>
-                            <span  class="green">Status: ATIVO</span>
+                            <span>Temperatura: ${temperatura} C</span>
+                            <span>Luminosidade: ${luminosidade}</span>
+                            <span  class="${situacao}">Status: ATIVO</span>
                         </div>
                     </div>
                     `
+
+            viveirosTotaisOut.innerHTML = viveirosTotais
+            viveirosAtivosOut.innerHTML = viveirosAtivos
         });
-        viveirosTotaisOut.innerHTML = viveirosTotais
+
+
     }
 
 </script>
