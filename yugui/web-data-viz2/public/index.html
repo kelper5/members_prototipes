@@ -99,12 +99,14 @@
                         </div>
                         <div class="infoGroup">
                             <h2>Cálculo</h2>
-                            <p>— O cálculo realizado pela calculadora leva em consideração o valor investido e o prejuízo de um viveiro que sofreu o processo de eutrofização.
+                            <p>— O cálculo realizado pela calculadora leva em consideração o valor investido e o
+                                prejuízo de um viveiro que sofreu o processo de eutrofização.
                             </p>
                         </div>
                         <div class="infoGroup">
                             <h2>Valores</h2>
-                            <p>— Leva-se em consideração que o preço de cada arduíno + sensores e máquina central custa R$5.000
+                            <p>— Leva-se em consideração que o preço de cada arduíno + sensores e máquina central custa
+                                R$5.000
                             </p>
                             <p>Exemplo:</p>
                             <p>1 Arduino + Sensores +Máquina Central = R$5.000</p>
@@ -160,7 +162,9 @@
                                 </div>
                             </div>
                             <div class="form-action">
-                                <button class="submit hover1" onclick="calcular()">Analisar Cenário</button>
+                                <button class="submit hover1 aparece" onclick="calcular()">Analisar Cenário
+                                    <span class="aparecetext" id="ipt_economia"></span>
+                                </button>
                                 <button class="clear hover1" onclick="limpar()">Limpar</button>
                             </div>
                         </div>
@@ -244,6 +248,7 @@
         </footer>
     </div>
 </body>
+
 </html>
 <script>
     function calcular() {
