@@ -1,96 +1,101 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
-    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Dashboards</title>
-
-    
-    <link rel="stylesheet" href="./../css/dashboards.css">
-    <link rel="stylesheet" href="./../css/estilo.css" />
-    <script src="../js/sessao.js"></script>
-    <script src="./../js/alerta.js"></script>
-
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-
-    <!-- scripts do Chart.js - 2022-1 -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <!--FONT AWESOME-->
-    <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/dash.css">
+    <title>Kelper - Dashboard</title>
 </head>
 
-<!-- <body onload=" atualizarFeed()"> -->
-
 <body>
-
-    <div class="janela">
-        <div class="header-left">
-            <h1>AquaTech</h1>
-
-            <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+    <header></header>
+    <main>
+        <div class="container">
+            <div class="navBar">
+                <figure>
+                    <img src="./img/LOGO.png" alt="">
+                </figure>
+                <ul>
+                    <li>Menu</li>
+                    <a href="dashMain.html" class="selected"><li >Gráficos</li></a>
+                    <a href="cards.html" class="hover4"><li>Viveiros</li></a>
+                    <a href="dashAlerts.html" class="hover4"><li>Alertas</li></a>
+                    <a href="login.html" class="red hover5"><li>LOG OUT</li></a>
+                </ul>
             </div>
-
-            <div class="btn-nav-white">
-                <a href="./cards.html">
-                    <h3>Aquários</h3>
-                </a>
+            <div class="content">
+                <div class="greeting">
+                    <div class="greet">
+                        <p>Olá, <span id="b_usuario"></span></p>
+                        <p>Bem-vindo(a) a <span id="b_empresa"></span>!</p>
+                    </div>
+                    <select name="" id="viveirosSelect">
+                       
+                    </select>
+                </div>
+                <div class="graphSession">
+                    <div class="legends">
+                        <div class="legend">
+                            <div class="boxGreen"></div>
+                            <p>Baixo</p>
+                        </div>
+                        <div class="legend">
+                            <div class="boxYellow"></div>
+                            <p>Médio</p>
+                        </div>
+                        <div class="legend">
+                            <div class="boxRed"></div>
+                            <p>Alto</p>
+                        </div>
+                    </div>
+                    <div class="kpi">
+                        <div class="kpiLum">
+                            <h3>Luminosidade</h3>
+                            <p>12.000 LUX</p>
+                        </div>
+                        <div class="kpiEutrofizacao">
+                            <h3>Risco de Eutrofização</h3>
+                            <p>Baixo</p>
+                        </div>
+                        <div class="kpiStatusSensores">
+                            <h3>Temperatura</h3>
+                            <p>29°C</p>
+                        </div>
+                    </div>
+                    <div class="graphics">
+                        <p>LUMINOSIDADE</p>
+                        <div class="lumGraph">
+                            <canvas id="graficoLinha"></canvas>
+                        </div>
+                        <p>TEMPERATURA</p>
+                        <div class="tempGraph">
+                            <canvas id="graficoColuna"></canvas>
+                        </div>
+                        <div class="activesGraph"></div>
+                    </div>
+                </div>
             </div>
-
-            <div class="btn-nav">
-
-                <h3>Gráficos</h3>
-
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./mural.html">
-                    <h3>Mural de Avisos</h3>
-                </a>
-            </div>
-
-            <div class="btn-logout" onclick="limparSessao()">
-                <h3>Sair</h3>
-            </div>
-
         </div>
-
-        <div class="dash">
-            <div id="alerta">
-            </div>
-
-            <div class="btns-dash" id="btnAquario">
-                <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
-            </div>
-            <div id="graficos">
-            </div>
-        </div>
-    </div>
-
-
+    </main>
+    <footer></footer>
 </body>
-
 </html>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="./scriptDash.js"></script>
 
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
     let proximaAtualizacao;
 
-    window.onload = exibirAquariosDoUsuario();
+    window.onload = exibirViveirosDoUsuario();
 
-    function exibirAquariosDoUsuario() {
-        var aquarios = JSON.parse(sessionStorage.AQUARIOS);
-        aquarios.forEach(item => {
-            document.getElementById("btnAquario").innerHTML += `
-            <button class="btn-chart" onclick="exibirAquario(${item.id})" id="btnAquario${item.id}">${item.descricao}</button>
+    function exibirViveirosDoUsuario() {
+        var viveiros = JSON.parse(sessionStorage.VIVEIROS);
+        viveiros.forEach(item => {
+            document.getElementById("viveirosSelect").innerHTML += `
+            <option value="${item.idArduino}" id="optViveiro${item.idArduino}">${item.nome}</option>
             `
 
             document.getElementById("graficos").innerHTML += `
@@ -110,23 +115,23 @@
             obterDadosGrafico(item.id)
         });
 
-        if (aquarios.length > 0) {
-            exibirAquario(aquarios[0].id)
+        if (viveiros.length > 0) {
+            exibirViveiro(viveiros[0].id)
         }
     }
 
-    function alterarTitulo(idAquario) {
-        var tituloAquario = document.getElementById(`tituloAquario${idAquario}`)
-        var descricao = JSON.parse(sessionStorage.AQUARIOS).find(item => item.id == idAquario).descricao;
-        tituloAquario.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>" + descricao + "</span>"
+    function alterarTitulo(idViveiro) {
+        var tituloViveiro = document.getElementById(`tituloViveiro${idViveiro}`)
+        var descricao = JSON.parse(sessionStorage.AQUARIOS).find(item => item.id == idViveiro).descricao;
+        tituloViveiro.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>" + descricao + "</span>"
     }
 
-    function exibirAquario(idAquario) {
-        let todosOsGraficos = JSON.parse(sessionStorage.AQUARIOS);
+    function exibirViveiro(idViveiro) {
+        let todosOsGraficos = JSON.parse(sessionStorage.VIVEIROS);
 
         for (i = 0; i < todosOsGraficos.length; i++) {
             // exibindo - ou não - o gráfico
-            if (todosOsGraficos[i].id != idAquario) {
+            if (todosOsGraficos[i].id != idViveiro) {
                 let elementoAtual = document.getElementById(`grafico${todosOsGraficos[i].id}`)
                 if (elementoAtual.classList.contains("display-block")) {
                     elementoAtual.classList.remove("display-block")
@@ -134,7 +139,7 @@
                 elementoAtual.classList.add("display-none")
 
                 // alterando estilo do botão
-                let btnAtual = document.getElementById(`btnAquario${todosOsGraficos[i].id}`)
+                let btnAtual = document.getElementById(`btnViveiro${todosOsGraficos[i].id}`)
                 if (btnAtual.classList.contains("btn-pink")) {
                     btnAtual.classList.remove("btn-pink")
                 }
@@ -143,12 +148,12 @@
         }
 
         // exibindo - ou não - o gráfico
-        let graficoExibir = document.getElementById(`grafico${idAquario}`)
+        let graficoExibir = document.getElementById(`grafico${idViveiro}`)
         graficoExibir.classList.remove("display-none")
         graficoExibir.classList.add("display-block")
 
         // alterando estilo do botão
-        let btnExibir = document.getElementById(`btnAquario${idAquario}`)
+        let btnExibir = document.getElementById(`btnViveiro${idViveiro}`)
         btnExibir.classList.remove("btn-white")
         btnExibir.classList.add("btn-pink")
     }
