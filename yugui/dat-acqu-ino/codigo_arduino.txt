@@ -1,5 +1,6 @@
 const int PINO_SENSOR_TEMPERATURA = A2;
 const int PINO_SENSOR_LDR = A5;
+
 float temperaturaCelsius;
 int valorLuminosidade;
 
@@ -9,13 +10,21 @@ void setup() {
 
 void loop() {
   float valorLeitura = analogRead(PINO_SENSOR_TEMPERATURA);
-  float valorLuminosidade = analogRead(PINO_SENSOR_LDR);
+  valorLuminosidade = analogRead(PINO_SENSOR_LDR);
 
   temperaturaCelsius = (valorLeitura * 5.0 / 1023.0) / 0.01;
 
+  float tensao = valorLuminosidade * (5.0 / 1023.0);
+
+  if (tensao <= 0.01) tensao = 0.01;
+
+  float resistenciaLDR = (5.0 - tensao) * 10000.0 / tensao;
+
+  float lux = 500.0 / (resistenciaLDR / 1000.0);
+
   Serial.print(temperaturaCelsius);
   Serial.print(";");
-  Serial.println(valorLuminosidade);
+  Serial.println(lux);
 
   delay(2000);
 }
