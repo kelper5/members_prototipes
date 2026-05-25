@@ -1,5 +1,20 @@
 const ctx = document.getElementById('graficoLinha');
-
+const perigo = {
+  type: 'box',
+  backgroundColor: 'rgba(0, 0, 0)',
+  borderWidth: 0,
+  yMax: 20,
+  yMin: -0.5,
+  label: {
+    drawTime: 'afterDraw',
+    display: true,
+    content: 'First quarter',
+    position: {
+      x: 'start',
+      y: 'center'
+    }
+  }
+};
 new Chart(ctx, {
   type: 'line',
   data: {
@@ -32,6 +47,16 @@ new Chart(ctx, {
         },
         grid: {
           color: '#000'
+        }
+      }
+    },
+    plugins: {
+      annotation: {
+        common: {
+          drawTime: 'beforeDraw'
+        },
+        annotations: {
+          
         }
       }
     }
@@ -71,6 +96,8 @@ new Chart(ctx2, {
         }
       },
       y: {
+        max: 40,
+        min: 0,
         beginAtZero: true,
         title: {
           display: true,
@@ -84,8 +111,19 @@ new Chart(ctx2, {
           color: '#000'
         }
       }
+    },
+    plugins: {
+      annotation: {
+        common: {
+          drawTime: 'beforeDraw'
+        },
+        annotations: {
+          perigo
+        }
+      }
     }
   }
 });
 
-Chart.defaults.backgroundColor = '#9BD0F5';
+
+

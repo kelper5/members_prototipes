@@ -8,21 +8,54 @@
 </head>
 
 <body onload="listar()">
-    <span>Razão Social</span><input type="text" id="razao_social_input">
-    <br>
-    <span>CNPJ</span><input type="text" id="cnpj_input">
-    <br>
-    <span>CNPJ da empresa matriz (se houver)</span><input type="text" id="matriz_input">
-    <br>
-    <span>Código autenticação</span><input type="text" id="codigo_input">
-    <br>
-    <hr>
-    <br>
-    <span>CEP da empresa</span><input type="text" id="endereco_input">
-    <br>
-    <span>Numero</span><input type="text" id="numero_endereco_input">
-    <button onclick="cadastrar()">Cadastrar</button>
+    <div class="container">
+        <div class="container">
+            <div class="alerta_erro">
+                <div class="card_erro" id="cardErro">
+                    <span id="mensagem_erro"></span>
+                </div>
+            </div>
+            <div class="content">
+                <figure class="logo"><img src="./assets/img/LOGO.png" alt="Logo Kelper"></figure>
+                <form action="" class="register">
+                    <div class="group">
+                        <div class="input">
+                            <span>Razão Social</span>
+                            <input type="text" id="razao_social_input">
+                        </div>
+                        <div class="input">
+                            <span>CNPJ</span>
+                            <input type="text" id="cnpj_input">
+                        </div>
+                    </div>
+                    <div class="group">
+                        <div class="input">
+                            <span>Nome da empresa matriz (se houver)</span>
+                            <input type="text" id="matriz_input">
+                        </div>
+                        <div class="input">
+                            <span>Código autenticação</span>
+                            <input type="text" id="codigo_input">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="group">
+                        <div class="input">
+                            <span>CEP da empresa</span>
+                            <input type="text" id="endereco_input">
+                        </div>
+                        <div class="input">
+                            <span>Numero</span>
+                            <input type="text" id="numero_endereco_input">
+                        </div>
+                    </div>
+                    <button onclick="cadastrar()">Cadastrar</button>
+            </div>
+            <div class="fundop"></div>
+        </div>
+    </div>
 </body>
+
 
 </html>
 <script>

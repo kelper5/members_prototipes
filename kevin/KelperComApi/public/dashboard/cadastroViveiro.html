@@ -6,13 +6,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../css/dash.css">
+    <link rel="stylesheet" href="../css/bob.css">
 </head>
 
 <body>
-    <p>nome</p> <input type="text" id="nome_viveiro_input">
-    <p>biomassa</p><input type="text" id="biomassa_input">
-    <br>
-    <button onclick="cadastrar()">Cadastrar</button>
+    <header></header>
+    <main>
+        <div class="container">
+            <button class="cara" onclick="abrir()"><img src="../assets/img/bob.png" alt="" class="cara"></button>
+
+            <div class="aparece" id="abrir">
+                <form action="/action_page.php" class="caixa">
+                    <button type="button" class="fecha" onclick="closeForm()"><img src="../assets/img/reject.png" alt=""
+                            class="fecha"></button>
+                    <div class="caixadentro"></div>
+                    <input type="text" class="imput">
+                </form>
+            </div>
+
+            <div class="navBar">
+                <figure>
+                    <img src="../assets/img/LOGO.png" alt="">
+                </figure>
+                <ul>
+                    <li>Menu</li>
+                    <a href="alertas.html" class="hover4">
+                        <li>Alertas</li>
+                    </a>
+                    <a href="Viveiros.html" class="hover4">
+                        <li>Viveiros</li>
+                    </a>
+                    <a href="dashboard.html" class="hover4">
+                        <li>Gráficos</li>
+                    </a>
+                    <a href="cadastroViveiro.html" class="selected">
+                        <li>Cadastrar Viveiro</li>
+                    </a>
+                    <a href="../login.html" class="red hover5">
+                        <li>LOG OUT</li>
+                    </a>
+                </ul>
+            </div>
+            <div class="content">
+                <div class="cadastro">
+                    <p class="cadastro3">nome</p> <input type="text" id="nome_viveiro_input" class="cadastro2">
+                    <p class="cadastro3">biomassa</p><input type="text" id="biomassa_input" class="cadastro2">
+
+                    <button onclick="cadastrar()" class="cadastro3">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 
 </html>
@@ -70,5 +114,12 @@
         } catch (erro) {
             console.log(erro);
         }
+    }
+    function abrir() {
+        document.getElementById("abrir").style.display = "block";
+    }
+
+    function closeForm() {
+        document.getElementById("abrir").style.display = "none";
     }
 </script>
