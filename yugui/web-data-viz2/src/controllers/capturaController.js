@@ -4,11 +4,11 @@ function buscarUltimasCapturas(req, res) {
 
     const limite_linhas = 7;
 
-    const fk_viveiro = req.params.fk_viveiro;
+    const idArduino = req.params.idArduino;
 
     console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
 
-    capturaModel.buscarUltimasCapturas(fk_viveiro, limite_linhas).then(function (resultado) {
+    capturaModel.buscarUltimasCapturas(idArduino, limite_linhas).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -24,11 +24,11 @@ function buscarUltimasCapturas(req, res) {
 
 function buscarCapturasEmTempoReal(req, res) {
 
-    const fk_viveiro = req.params.fk_viveiro;
+    const idArduino = req.params.idArduino;
 
     console.log(`Recuperando capturas em tempo real`);
 
-    capturaModel.buscarCapturasEmTempoReal(fk_viveiro).then(function (resultado) {
+    capturaModel.buscarCapturasEmTempoReal(idArduino).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
