@@ -74,7 +74,6 @@
                 console.log(resposta);
 
                 resposta.json().then(json => {
-                    console.log("asdfgfdsa")
                     console.log(json);
                     console.log(JSON.stringify(json));
                     sessionStorage.EMAIL_USUARIO = json.email;
@@ -87,7 +86,6 @@
                     setTimeout(function () {
                         window.location = "./dashboard/cards.html";
                     }, 1000); // apenas para exibir o loading
-                    console.log(sessionStorage.NOME_EMPRESA)
                 });
 
             } else {
