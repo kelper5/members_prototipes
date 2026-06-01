@@ -29,6 +29,7 @@ function autenticar(req, res) {
                                         nome: resultadoAutenticar[0].nome,
                                         senha: resultadoAutenticar[0].senha,
                                         empresaId: resultadoAutenticar[0].empresaId,
+                                        empresaNome: resultadoAutenticar[0].empresaNome,
                                         viveiros: resultadoViveiros
                                     });
                                 } else {
