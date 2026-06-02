@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/dash.css">
+    <link rel="stylesheet" href="../css/bob.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header></header>
+    <main>
+        <div class="container">
+            <!-- <button class="cara" onclick="abrir()"><img src="../assets/img/bob.png" alt="" class="cara"></button>
+
+            <div class="aparece" id="abrir">
+                <form action="/action_page.php" class="caixa">
+                    <button type="button" class="fecha" onclick="closeForm()"><img src="../assets/img/reject.png" alt=""
+                            class="fecha"></button>
+                    <div class="caixadentro"></div>
+                    <input type="text" class="imput">
+                </form>
+            </div> -->
+
+            <div class="navBar">
+                <figure>
+                    <img src="../assets/img/LOGO.png" alt="">
+                </figure>
+                <ul>
+                    <li>Menu</li>
+                    <a href="alertas.html" class="hover4">
+                        <li>Alertas</li>
+                    </a>
+                    <a href="Viveiros.html" class="hover4">
+                        <li>Viveiros</li>
+                    </a>
+                    <a href="dashboard.html" class="hover4">
+                        <li>Gráficos</li>
+                    </a>
+                    <a href="cadastroViveiro.html" class="selected">
+                        <li>Cadastrar Viveiro</li>
+                    </a>
+                    <a href="../login.html" class="red hover5">
+                        <li>LOG OUT</li>
+                    </a>
+                </ul>
+            </div>
+            <div class="content">
+                <div class="cadastro">
+                    <p class="cadastro3">nome</p> <input type="text" id="nome_viveiro_input" class="cadastro2">
+                    <p class="cadastro3">biomassa</p><input type="text" id="biomassa_input" class="cadastro2">
+
+                    <button onclick="cadastrar()" class="cadastro3">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
+<script>
+    async function cadastrar() {
+
+        var nomeVar = nome_viveiro_input.value;
+        var biomassaVar = biomassa_input.value;
+
+        if (
+            nomeVar == "" ||
+            biomassaVar == ""
+        ) {
+            cardErro.style.display = "block";
+            mensagem_erro.innerHTML =
+                "Preencha todos os campos";
+            return false;
+        }
+        console.log(sessionStorage.ID_EMPRESA)
+        try {
+            const respostaViveiro =
+                await fetch("/viveiros/cadastrar", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        nomeServer: nomeVar,
+                        biomassaServer: biomassaVar,
+                        fkEmpresaServer: sessionStorage.ID_EMPRESA
+                    }),
+                });
+
+            if (!respostaViveiro.ok) {
+                throw "Erro ao cadastrar viveiro";
+            }
+            console.log("Viveiro Cadastrado!");
+            const viveirosInfos = await respostaViveiro.json();
+            const idViveiro = viveirosInfos.insertId;
+            const respostaSensor =
+                await fetch("/arduinos/cadastrar", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        idViveiroServer: idViveiro,
+                    }),
+                });
+
+            if (!respostaSensor.ok) {
+                throw "Erro ao cadastrar sensor";
+            }
+            console.log("Sensor Cadastrado!");
+        } catch (erro) {
+            console.log(erro);
+        }
+    }
+</script>
