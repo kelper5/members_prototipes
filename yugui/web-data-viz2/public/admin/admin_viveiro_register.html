@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/dash.css">
-    <link rel="stylesheet" href="../css/bob.css">
+    <!-- <link rel="stylesheet" href="../css/bob.css"> -->
     <title>Document</title>
 </head>
 
@@ -31,17 +31,17 @@
                 <ul>
                     <li>Menu</li>
                     <a href="alertas.html" class="hover4">
-                        <li>Alertas</li>
+                        <li>Cadastrar Empresa</li>
                     </a>
-                    <a href="Viveiros.html" class="hover4">
-                        <li>Viveiros</li>
-                    </a>
-                    <a href="dashboard.html" class="hover4">
-                        <li>Gráficos</li>
-                    </a>
-                    <a href="cadastroViveiro.html" class="selected">
+                    <a href="Viveiros.html" class="hover4 selected">
                         <li>Cadastrar Viveiro</li>
                     </a>
+                    <a href="dashboard.html" class="hover4">
+                        <li>Empresas Cadastradas</li>
+                    </a>
+                    <!-- <a href="cadastroViveiro.html" class="selected">
+                        <li>NULL</li>
+                    </a> -->
                     <a href="../login.html" class="red hover5">
                         <li>LOG OUT</li>
                     </a>
@@ -49,8 +49,10 @@
             </div>
             <div class="content">
                 <div class="cadastro">
-                    <p class="cadastro3">nome</p> <input type="text" id="nome_viveiro_input" class="cadastro2">
-                    <p class="cadastro3">biomassa</p><input type="text" id="biomassa_input" class="cadastro2">
+                    <h1>Cadastre um Viveiro para uma empresa aqui!</h1>
+                    <p class="cadastro3">CNPJ da empresa</p> <input type="text" id="cnpj_empresa_input" class="cadastro2">
+                    <p class="cadastro3">Nome do viveiro</p> <input type="text" id="nome_viveiro_input" class="cadastro2">
+                    <p class="cadastro3">biomassa do viveiro</p><input type="text" id="biomassa_input" class="cadastro2">
 
                     <button onclick="cadastrar()" class="cadastro3">Cadastrar</button>
                 </div>
