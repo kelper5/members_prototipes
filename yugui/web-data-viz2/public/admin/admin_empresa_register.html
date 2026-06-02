@@ -26,7 +26,7 @@
 
             <div class="navBar">
                 <figure>
-                    <img src="../assets/img/LOGO.png" alt="">
+                    <img src="../assets/img/adminLogokelper.png" alt="">
                 </figure>
                 <ul>
                     <li>Menu</li>
@@ -55,11 +55,11 @@
                     <p class="cadastro3">CNPJ</p> 
                     <input type="text" id="nome_viveiro_input" class="cadastro2">
                     <p class="cadastro3">CEP</p>
-                    <input type="text" id="biomassa_input" class="cadastro2">
+                    <input type="text" id="endereco_input" class="cadastro2">
                     <p class="cadastro3">Número</p>
-                    <input type="text" id="biomassa_input" class="cadastro2">
+                    <input type="text" id="numero_endereco_input" class="cadastro2">
                     <p class="cadastro3">CNPJ da Matriz (se houver)</p>
-                    <input type="text" id="biomassa_input" class="cadastro2">
+                    <input type="text" id="matriz_input" class="cadastro2">
                     <button onclick="cadastrar()" class="cadastro3">Cadastrar</button>
                 </div>
             </div>
@@ -68,3 +68,130 @@
 </body>
 
 </html>
+<script>
+
+    let lista_enderecos = []
+
+    async function cadastrar() {
+
+        var razaoSocialVar = razao_social_input.value;
+        var cnpjVar = cnpj_input.value;
+        var matrizVar = matriz_input.value;
+        var enderecoVar = endereco_input.value;
+        var numeroEnderecoVar = numero_endereco_input.value;
+        var codigoVar = codigo_input.value
+        let id_endereco;
+        let cep_existente = false;
+        let fkMatriz = null
+
+        if (
+            razaoSocialVar == "" ||
+            cnpjVar == "" ||
+            enderecoVar == "" ||
+            numeroEnderecoVar == "" ||
+            codigoVar == ""
+        ) {
+            cardErro.style.display = "block";
+            mensagem_erro.innerHTML =
+                "Preencha todos os campos";
+            return false;
+        }
+
+        if (matrizVar != "") {
+
+            await fetch(`/empresas/buscar/${matrizVar}`, {
+                method: "GET",
+            })
+                .then(function (resposta) {
+                    if (!resposta.ok) {
+                        throw new Error("Empresa não encontrada");
+                    }
+                    return resposta.json();
+                })
+                .then((empresa) => {
+                    fkMatriz = empresa[0].id
+                })
+                .catch(function (erro) {
+                    console.log(`#ERRO: ${erro}`);
+                });
+
+        }
+
+        for (let i = 0; i < lista_enderecos.length; i++) {
+            if (lista_enderecos[i].cep == enderecoVar) {
+                id_endereco = lista_enderecos[i].id
+                cep_existente = true;
+                break;
+            }
+        }
+
+        if (!cep_existente) {
+            try {
+                const respostaEndereco =
+                    await fetch("/enderecos/cadastrar", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            cepServer: enderecoVar
+                        }),
+                    });
+
+                if (!respostaEndereco.ok) {
+                    throw "Erro ao cadastrar endereço";
+                }
+                const enderecoInfos = await respostaEndereco.json();
+                id_endereco = enderecoInfos.insertId;
+            } catch (erro) {
+                console.log(erro);
+            }
+        }
+
+        try {
+            const respostaEmpresa =
+                await fetch("/empresas/cadastrar", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        razao_social_server: razaoSocialVar,
+                        cnpj_server: cnpjVar,
+                        codigo_ativacao_server: codigoVar,
+                        fk_matriz_server: fkMatriz,
+                        fk_endereco_server: id_endereco,
+                        complemento_imovel_server: numeroEnderecoVar
+                    }),
+                });
+
+            if (!respostaEmpresa.ok) {
+                throw "Erro ao cadastrar empresa";
+            }
+            console.log("Empresa cadastrada");
+        } catch (erro) {
+            console.log(erro);
+        }
+    }
+
+
+    function listar() {
+        fetch("/enderecos/listar", {
+            method: "GET",
+        })
+            .then(function (resposta) {
+                resposta.json().then((enderecos) => {
+                    enderecos.forEach((endereco) => {
+                        lista_enderecos.push(endereco);
+
+                        console.log("lista_enderecos")
+                        console.log(lista_enderecos[0].cep, lista_enderecos[0].id)
+                    });
+                });
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+    }
+
+</script>
