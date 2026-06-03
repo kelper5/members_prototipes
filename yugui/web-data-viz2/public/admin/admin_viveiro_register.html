@@ -24,9 +24,9 @@
                 </form>
             </div> -->
 
-            <div class="navBar">
+            <div class="navBar adminBlack">
                 <figure>
-                    <img src="../assets/img/adminLogokelper.png" alt="">
+                    <img src="../assets/img/logoAdminWhite.png" alt="">
                 </figure>
                 <ul>
                     <li>Menu</li>
@@ -48,11 +48,14 @@
                 </ul>
             </div>
             <div class="content">
-                <div class="cadastro">
+                <div class="cadastro adminBlack">
                     <h1>Cadastre um Viveiro para uma empresa aqui!</h1>
-                    <p class="cadastro3">CNPJ da empresa</p> <input type="text" id="cnpj_empresa_input" class="cadastro2">
-                    <p class="cadastro3">Nome do viveiro</p> <input type="text" id="nome_viveiro_input" class="cadastro2">
-                    <p class="cadastro3">biomassa do viveiro</p><input type="text" id="biomassa_input" class="cadastro2">
+                    <p class="cadastro3">CNPJ da empresa</p> <input type="text" id="cnpj_input"
+                        class="cadastro2">
+                    <p class="cadastro3">Nome do viveiro</p> <input type="text" id="nome_viveiro_input"
+                        class="cadastro2">
+                    <p class="cadastro3">biomassa do viveiro</p><input type="text" id="biomassa_input"
+                        class="cadastro2">
 
                     <button onclick="cadastrar()" class="cadastro3">Cadastrar</button>
                 </div>
@@ -67,6 +70,8 @@
 
         var nomeVar = nome_viveiro_input.value;
         var biomassaVar = biomassa_input.value;
+        var cnpjEmpresa = cnpj_input.value
+        var idEmpresa
 
         if (
             nomeVar == "" ||
@@ -78,6 +83,21 @@
             return false;
         }
         console.log(sessionStorage.ID_EMPRESA)
+        await fetch(`/empresas/buscar/${cnpjEmpresa}`, {
+            method: "GET",
+        })
+            .then(function (resposta) {
+                if (!resposta.ok) {
+                    throw new Error("Empresa não encontrada");
+                }
+                return resposta.json();
+            })
+            .then((empresa) => {
+                idEmpresa = empresa[0].id
+            })
+            .catch(function (erro) {
+                console.log(`#ERRO: ${erro}`);
+            });
         try {
             const respostaViveiro =
                 await fetch("/viveiros/cadastrar", {
@@ -88,7 +108,7 @@
                     body: JSON.stringify({
                         nomeServer: nomeVar,
                         biomassaServer: biomassaVar,
-                        fkEmpresaServer: sessionStorage.ID_EMPRESA
+                        fkEmpresaServer: idEmpresa
                     }),
                 });
 

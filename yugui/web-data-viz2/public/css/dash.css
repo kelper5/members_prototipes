@@ -404,7 +404,7 @@ input {
     background-color: #fff;
     padding-left: 15px;
 }
-p.cadastro3{
+p.cadastro3{    
     font-size: 1.5em;
     color: #fff;
 }
@@ -420,4 +420,8 @@ button.cadastro3{
     font-size: 30px;
     color: #fff;
     background-color: #253528;
+}
+
+.adminBlack{
+    background-color: #2c2c2c;
 }
