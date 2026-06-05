@@ -176,9 +176,15 @@ header{
 
 .calculator{
     background-color: #1B301C;
-    height: 1000px;
+    height: 1200px;
     width: 100%;
     color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding-top: 20px;
+    padding-bottom: 100px;
 }
 
 .product{
@@ -201,6 +207,7 @@ header{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    height: fit-content;
 }
 
 /* .buttons a{
@@ -208,8 +215,8 @@ header{
 } */
 
 .buttons a{
-    width: 25%;
-    height: 5FF0px;
+    width: 30%;
+    height: 50px;
     border-radius: 10px;
     font-size: 1.3em;
     color: #fff;
@@ -468,4 +475,9 @@ footer img{
   visibility: visible;
   -webkit-animation: fadeIn 1s;
   animation: fadeIn 1s
+}
+
+.calculatorGroupAll{
+    display: flex;
+    width: 100%;
 }
