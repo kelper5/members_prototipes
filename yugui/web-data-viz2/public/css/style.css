@@ -114,8 +114,8 @@ figure img{
     width: 50px;
 }
 
-.fundop{
+.imgHalf{
+    background-image: url(../assets/img/fishes.jpg);
     width: 50%;
     background-size: cover;
-    background-image: url(../assets/img/fishes.jpg);
 }
