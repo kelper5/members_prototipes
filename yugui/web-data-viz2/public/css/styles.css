@@ -202,12 +202,19 @@ header{
     justify-content: space-around;
 }
 
-.buttons button{
-    width: 30%;
-    height: 60px;
+/* .buttons a{
+        
+} */
+
+.buttons a{
+    width: 25%;
+    height: 50px;
     border-radius: 10px;
     font-size: 1.3em;
     color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .buttons .primaryColor{
