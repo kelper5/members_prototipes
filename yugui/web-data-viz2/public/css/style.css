@@ -18,8 +18,14 @@
 }
 
 .logo img{
-    width: 320px;
-    height: 220px;
+    width:85%;
+    height: 85%;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .content{
