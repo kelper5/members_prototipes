@@ -12,6 +12,9 @@ var cors = require("cors");
 var path = require("path");
 var PORTA_APP = process.env.APP_PORT;
 var HOST_APP = process.env.APP_HOST;
+var PORTA = process.env.PORTA;
+const { GoogleGenAI } = require("@google/genai");
+const chatIA = new GoogleGenAI({ apiKey: process.env.MINHA_CHAVE });
 
 var app = express();
 
@@ -23,6 +26,7 @@ var viveirosRouter = require("./src/routes/viveiros");
 var empresasRouter = require("./src/routes/empresas");
 var enderecosRouter = require("./src/routes/enderecos");
 var arduinosRouter = require("./src/routes/arduinos");
+var bobRouter = require("./src/routes/bob");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -38,6 +42,8 @@ app.use("/viveiros", viveirosRouter);
 app.use("/empresas", empresasRouter);
 app.use("/enderecos", enderecosRouter);
 app.use("/arduinos", arduinosRouter);
+app.use("/bob", bobRouter);
+
 
 app.listen(PORTA_APP, function () {
     console.log(`
@@ -55,3 +61,18 @@ app.listen(PORTA_APP, function () {
     \tSe .:producao:. você está se conectando ao banco remoto. \n\n
     \t\tPara alterar o ambiente, comente ou descomente as linhas 1 ou 2 no arquivo 'app.js'\n\n`);
 });
+
+ app.listen(PORTA, () => {
+     console.info(
+         `
+         ######                ###    #    
+         #     #  ####  #####   #    # #   
+         #     # #    # #    #  #   #   #  
+         ######  #    # #####   #  #     # 
+         #     # #    # #    #  #  ####### 
+         #     # #    # #    #  #  #     # 
+         ######   ####  #####  ### #     # 
+         `
+     );
+     console.info(`A API BobIA iniciada, acesse http:localhost:${PORTA}`);
+ });
