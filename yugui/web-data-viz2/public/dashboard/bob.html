@@ -11,67 +11,78 @@
 
 <body>
 
-    <div class="container" id="container">
-        <div class="navBar">
-            <figure>
-                <img src="./img/LOGO.png" alt="">
-            </figure>
-            <ul>
-                <li>Menu</li>
-                <li class="hover4"><a href="./dashboard.html">Gráficos</a></li>
-                <li class="selected"><a href="./dashViveiros.html">Viveiros</a></li>
-                <li class="hover4"><a href="./dashAlerts.html">Alertas</a></li>
-                <li class="hover4"><a href="./cadastroViveiro.html">Cadastrar Viveiro</a></li>
-                <li class="red hover5"><a href="./login.html">LOG OUT</a></li> <!-- TEM QUE LIMPAR SEssÃo -->
-            </ul>
-        </div>
-        <div class="contentBob">
-            <h1>Área de ajuda ao cliente</h1>
-            <p>Tire sua dúvida agora mesmo com o nosso agente de IA, o Bob! Digite sua dúvida na caixa abaixo e aguarde
-                uma resposta.</p>
-            <div class="chatBox">
-                <div class="messages" id="messages">
-                    
-                </div>
-                <div class="inputsBob"><textarea id="pergunta" type="text" placeholder="Digite a pergunta..."></textarea><button onclick="gerarResposta()" class="hover">Gerar Resposta</button></div>
+    <main>
+        <div class="container" id="container">
+            <div class="navBar">
+                <figure>
+                    <img src="./img/LOGO.png" alt="">
+                </figure>
+                <ul>
+                    <li>Menu</li>
+                    <li class="hover4"><a href="./dashboard.html">Gráficos</a></li>
+                    <li class="selected"><a href="./dashViveiros.html">Viveiros</a></li>
+                    <li class="hover4"><a href="./dashAlerts.html">Alertas</a></li>
+                    <li class="hover4"><a href="./cadastroViveiro.html">Cadastrar Viveiro</a></li>
+                    <li class="red hover5"><a href="./login.html">LOG OUT</a></li> <!-- TEM QUE LIMPAR SEssÃo -->
+                </ul>
             </div>
+            <div class="contentBob">
+                <h1>Área de ajuda ao cliente</h1>
+                <div class="greetingBob">
+                    <img src="../assets/img/bob.png" alt="">
+                    <p>Tire sua dúvida agora mesmo com o nosso agente de IA, o Bob!</p>
+                </div>
+                <div class="chatBox">
+                    <div class="messages" id="messages">
 
-            
-            <h3>Resposta da IA:</h3>
-            <div id="resposta"></div>
+                    </div>
+                    <div class="inputsBob">
+                        <textarea id="pergunta" type="text" placeholder=""></textarea>
+                        <button onclick="gerarResposta()" class="hover"><img src="../assets/img/sendMessage.png"
+                                alt=""></button>
+                    </div>
+                </div>
+                <div class="otherRedirects">
+                    <p>Não conseguiu resolver o problema? Abra um chamado ou baixe o manual de instalação</p>
+                    <div class="helpAnchors">
+                        <a href="jira" class="">
+                            Abrir chamado
+                        </a>
+                        <a href="manual">Manual de Instalação</a>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </main>
+</body>
 
-    <script>
+</html>
+<script>
 
-        async function gerarResposta() {
-            const pergunta = document.getElementById('pergunta').value;
-            messages.innerHTML += `
+    async function gerarResposta() {
+        const pergunta = document.getElementById('pergunta').value;
+        messages.innerHTML += `
             <div class="question">
                 <div class="questionMessage" id="">${pergunta}</div>
             </div>
             `
 
-            const response = await fetch('/bob/perguntar', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ pergunta })
-            });
+        const response = await fetch('/bob/perguntar', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ pergunta })
+        });
 
-            const data = await response.json();
-            console.log(data)
-            resposta.style.display = 'block';
-            messages.innerHTML += `
+        const data = await response.json();
+        console.log(data)
+        resposta.style.display = 'block';
+        messages.innerHTML += `
             <div class="answer">
                 <div class="answerMessage">${data}</div>
             </div>
             `;
-        }
+    }
 
-    </script>
-
-</body>
-
-</html>
+</script>
