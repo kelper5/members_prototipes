@@ -17,14 +17,20 @@ function buscarUltimasCapturas(idArduino, limite_linhas) {
 
 function buscarCapturasEmTempoReal(idArduino) {
 
-    var instrucaoSql = `SELECT 
-        temperatura, 
-        luminosidade,
-        criado_em,
-        DATE_FORMAT(criado_em,'%H:%i:%s') as momento_grafico
-                    FROM captura
-                    WHERE fk_arduino = ${idArduino} 
-                    ORDER BY id DESC LIMIT 1`;
+    var instrucaoSql = `
+        SELECT
+            ROUND(AVG(temperatura), 2) AS temperatura,
+            ROUND(AVG(luminosidade), 2) AS luminosidade
+        FROM (
+            SELECT
+                temperatura,
+                luminosidade
+            FROM captura
+            WHERE fk_arduino = ${idArduino}
+            ORDER BY id DESC
+            LIMIT 168
+        ) AS ultimas_capturas;
+    `;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
