@@ -8,8 +8,4 @@ router.post("/cadastrar", function (req, res) {
     arduinoController.cadastrar(req, res);
 })
 
-router.get("/buscar/:id", function (req, res) {
-  arduinoController.buscarPorId(req, res);
-});
-
 module.exports = router;
