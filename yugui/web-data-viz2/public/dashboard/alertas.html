@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaTech | Tempo Real</title>
+
+
+    <link rel="stylesheet" href="./../css/alertViveiros.css">
+
+    <script src="../js/sessao.js"></script>
+    <script src="../js/alerta.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body onload="exibirAlertas()">
+    <header></header>
+    <main>
+        <div class="container">
+            <div class="navBar">
+                <figure>
+                    <img src="./img/LOGO.png" alt="">
+                </figure>
+                <ul>
+                    <li>Menu</li>
+                    <li class="hover4"><a href="./dashboard.html">Gráficos</a></li>
+                    <li class="selected"><a href="./cards.html">Viveiros</a></li>
+                    <li class="hover4"><a href="./alertas.html">Alertas</a></li>
+                    <li class="hover4"><a href="./bob.html">Ajuda</a></li>
+                    <li class="red hover5"><a href="./login.html">LOG OUT</a></li> <!-- TEM QUE LIMPAR SEssÃo -->
+                </ul>
+            </div>
+            <div class="content">
+                <div class="viveiros" id="insertCards">
+                    <div class="kpiViveiros">
+                        <p>Alertas Totais: <span id="alertasOut"></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
+    <footer></footer>
+
+</body>
+
+<script>
+
+    var alertasTotais = 0
+
+    async function exibirAlertas() {
+        console.log(sessionStorage.ALERTAS)
+
+        await JSON.parse(sessionStorage.ALERTAS).forEach(async item => {
+            console.log("ITEM:");
+            console.log(item);
+
+            console.log("ID ARDUINO:");
+            console.log(item.idArduino);
+            alertasTotais++
+
+            document.getElementById("insertCards").innerHTML +=
+                `
+                    <div class="viveiro">
+                        <h1>${item.nome}</h1>
+                        <div class="stats">
+                            <span>Temperatura: ${temperatura} C</span>
+                            <span>Luminosidade: ${luminosidade}</span>
+                            <span  class="${situacao}">Status: ATIVO</span>
+                        </div>
+                    </div>
+                    `
+
+            viveirosTotaisOut.innerHTML = viveirosTotais
+            viveirosAtivosOut.innerHTML = viveirosAtivos
+        });
+
+
+    }
+
+</script>
+
+</html>
