@@ -45,8 +45,7 @@ CREATE TABLE viveiro (
 );
 
 CREATE TABLE arduino (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    fk_viveiro INT NOT NULL,
+    fk_viveiro INT PRIMARY KEY,
     status_arduino BOOLEAN DEFAULT TRUE NOT NULL,
     criado_em DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
     atualizado_em DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
@@ -59,7 +58,7 @@ CREATE TABLE captura (
     luminosidade DECIMAL(7, 1) NOT NULL,
     fk_arduino INT NOT NULL,
     criado_em DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    FOREIGN KEY (fk_arduino) REFERENCES arduino(id)
+    FOREIGN KEY (fk_arduino) REFERENCES arduino(fk_viveiro)
 );
 
 CREATE TABLE aviso (
