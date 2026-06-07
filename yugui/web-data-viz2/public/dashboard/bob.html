@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BobIA</title>
+    <!-- <link rel="stylesheet" href="../css/bob.css"> -->
+    <link rel="stylesheet" href="../css/dash.css">
+</head>
+
+<body>
+
+    <main>
+        <div class="container" id="container">
+            <div class="navBar">
+                <figure>
+                    <img src="./img/LOGO.png" alt="">
+                </figure>
+                <ul>
+                    <li>Menu</li>
+                    <li class="hover4"><a href="./dashboard.html">Gráficos</a></li>
+                    <li class="hover4"><a href="./cards.html">Viveiros</a></li>
+                    <li class="hover4"><a href="./dashAlerts.html">Alertas</a></li>
+                    <li class="selected"><a href="./bob.html">Ajuda</a></li>
+                    <li class="red hover5"><a href="./login.html">LOG OUT</a></li> <!-- TEM QUE LIMPAR SEssÃo -->
+                </ul>
+            </div>
+            <div class="contentBob">
+                <h1>Ajuda</h1>
+                <div class="greetingBob">
+                    <img src="../assets/img/bob.png" alt="">
+                    <p>Tire sua dúvida agora mesmo com o nosso agente de IA, o Bob!</p>
+                </div>
+                <div class="chatBox">
+                    <div class="messages" id="messages">
+
+                    </div>
+                    <div class="inputsBob">
+                        <textarea id="pergunta" type="text" placeholder=""></textarea>
+                        <button onclick="gerarResposta()" class="hover"><img src="../assets/img/sendMessage.png"
+                                alt=""></button>
+                    </div>
+                </div>
+                <div class="otherRedirects">
+                    <p>Não conseguiu resolver o problema? Abra um chamado ou baixe o manual de instalação</p>
+                    <div class="helpAnchors">
+                        <a href="https://kelper.atlassian.net/servicedesk/customer/portal/1" class="">
+                            Abrir chamado
+                        </a>
+                        <a href="../assets/manualInstalacaoKelperG10.pdf" download="manualInstalacaoKelperG10.pdf">Manual de Instalação</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
+<script>
+
+    async function gerarResposta() {
+        const pergunta = document.getElementById('pergunta').value;
+        messages.innerHTML += `
+            <div class="question">
+                <div class="questionMessage" id="">${pergunta}</div>
+            </div>
+            `
+
+        const response = await fetch('/bob/perguntar', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ pergunta })
+        });
+
+        const data = await response.json();
+        console.log(data)
+        resposta.style.display = 'block';
+        messages.innerHTML += `
+            <div class="answer">
+                <div class="answerMessage">${data}</div>
+            </div>
+            `;
+    }
+
+</script>
