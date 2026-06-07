@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaTech | Tempo Real</title>
+
+
+    <link rel="stylesheet" href="./../css/alertViveiros.css">
+
+    <script src="../js/sessao.js"></script>
+    <script src="../js/alerta.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body onload="exibirEmpresas()">
+
+    <header></header>
+    <main>
+        <div class="container">
+            <div class="navBar adminBlack">
+                <figure>
+                    <img src="../assets/img/logoAdminWhite.png" alt="">
+                </figure>
+                <ul>
+                    <li>Menu</li>
+                    <a href="admin_empresa_register.html" class="hover4">
+                        <li>Cadastrar Empresa</li>
+                    </a>
+                    <a href="admin_viveiro_register.html" class="hover4">
+                        <li>Cadastrar Viveiro</li>
+                    </a>
+                    <a href="admin_list_empresas.html" class="hover4 selected">
+                        <li>Empresas Cadastradas</li>
+                    </a>
+                    <!-- <a href="cadastroViveiro.html" class="selected">
+                        <li>NULL</li>
+                    </a> -->
+                    <a href="../login.html" class="red hover5">
+                        <li>LOG OUT</li>
+                    </a>
+                </ul>
+            </div>
+            <div class="content">
+                <div class="viveiros" id="insertCards">
+                    <div class="kpiViveiros">
+                        <p>Empresas cadastradas: <span id="empresasOut"></span></p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
+    <footer></footer>
+
+</body>
+
+<script>
+
+    var empresasTotais = 0
+
+    async function exibirEmpresas() {
+
+
+
+        let resposta = await fetch(`/empresas/listar/`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+
+        });
+
+        let respostaJson = await resposta.json()
+        empresasTotais = respostaJson.length
+        console.log(respostaJson)
+
+        empresasOut.innerHTML = empresasTotais
+
+        respostaJson.forEach(item => {
+            insertCards.innerHTML += `
+            <div class="viveiro">
+                <h1>${item.razao_social}</h1>
+                <div class="stats">
+                    <span>CNPJ: ${item.cnpj}</span>
+                    <span>Código: ${item.codigo_ativacao}</span>
+                </div>
+            </div>
+            
+            
+            
+            `
+        });
+
+        //             <div class="viveiro">
+        //                 <h1>${item.nome}</h1>
+        //                 <div class="stats">
+        //                     <span>Temperatura: ${temperatura} C</span>
+        //                     <span>Luminosidade: ${luminosidade}</span>
+        //                     <span  class="${situacao}">Status: ATIVO</span>
+        //                 </div>
+        //             </div>
+    }
+
+
+
+
+</script>
+
+</html>
