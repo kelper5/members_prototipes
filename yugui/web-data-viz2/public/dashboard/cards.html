@@ -9,7 +9,7 @@
     <title>AquaTech | Tempo Real</title>
 
 
-    <link rel="stylesheet" href="./../css/alertViveiros.css">
+    <link rel="stylesheet" href="./../css/dash.css">
 
     <script src="../js/sessao.js"></script>
     <script src="../js/alerta.js"></script>
@@ -38,12 +38,15 @@
                 </ul>
             </div>
             <div class="content">
-                <div class="viveiros" id="insertCards">
+                <div class="viveiros">
                     <div class="kpiViveiros">
                         <p>Viveiros Ativos: <span id="viveirosAtivosOut"></span>/<span id="viveirosTotaisOut"></span>
                         </p>
-                    </div>
 
+                    </div>
+                    <div class="viveiross" id="insertCards">
+                        
+                    </div>
                 </div>
             </div>
         </div>
@@ -88,17 +91,17 @@
 
             if (respostaJson[0].temperatura != null) {
                 temperatura = respostaJson[0].temperatura
-            }else{
+            } else {
                 temperatura = 0
             }
 
             if (respostaJson[0].luminosidade != null) {
                 luminosidade = respostaJson[0].luminosidade
-            }else{
+            } else {
                 luminosidade = 0
             }
 
-            if(respostaJson[0].status_arduino == 0){
+            if (respostaJson[0].status_arduino == 0) {
                 situacao == red
             }
 
