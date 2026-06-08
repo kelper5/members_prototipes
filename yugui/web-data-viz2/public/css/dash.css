@@ -604,3 +604,24 @@ button.cadastro3 {
 .otherRedirects a:hover{
     background-color: #379e59;
 }
+
+.mensagemFeedback{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.erroFeedback{
+    background-color: #e26363;
+    color: #fff;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.acertoFeedback{
+    background-color: #51b366;
+    color: #fff;
+    width: 100%;
+    margin-top: 20px;
+}

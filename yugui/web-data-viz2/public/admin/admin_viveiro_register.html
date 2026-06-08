@@ -50,14 +50,14 @@
             <div class="content">
                 <div class="cadastro adminBlack">
                     <h1>Cadastre um Viveiro para uma empresa aqui!</h1>
-                    <p class="cadastro3">CNPJ da empresa</p> <input type="text" id="cnpj_input"
-                        class="cadastro2">
+                    <p class="cadastro3">CNPJ da empresa</p> <input type="text" id="cnpj_input" class="cadastro2">
                     <p class="cadastro3">Nome do viveiro</p> <input type="text" id="nome_viveiro_input"
                         class="cadastro2">
                     <p class="cadastro3">biomassa do viveiro</p><input type="text" id="biomassa_input"
                         class="cadastro2">
 
                     <button onclick="cadastrar()" class="cadastro3">Cadastrar</button>
+                    <div id="mensagemFeedback"></div>
                 </div>
             </div>
         </div>
@@ -77,9 +77,8 @@
             nomeVar == "" ||
             biomassaVar == ""
         ) {
-            cardErro.style.display = "block";
-            mensagem_erro.innerHTML =
-                "Preencha todos os campos";
+            mensagemFeedback.innerHTML = `<p class="erroFeedback">Preencha todos os campos!</p>`
+            setInterval(sumirMensagem, 4000)
             return false;
         }
         console.log(sessionStorage.ID_EMPRESA)
@@ -89,6 +88,8 @@
             .then(function (resposta) {
                 if (!resposta.ok) {
                     throw new Error("Empresa não encontrada");
+                    mensagemFeedback.innerHTML = `<p class="erroFeedback">Empresa não encontrada!</p>`
+                    setInterval(sumirMensagem, 4000)
                 }
                 return resposta.json();
             })
@@ -133,8 +134,14 @@
                 throw "Erro ao cadastrar sensor";
             }
             console.log("Sensor Cadastrado!");
+            mensagemFeedback.innerHTML = `<p class="acertoFeedback">Viveiro cadastrado com sucesso!</p>`
+            setInterval(sumirMensagem, 4000)
         } catch (erro) {
             console.log(erro);
         }
+    }
+
+    function sumirMensagem() {
+        mensagemFeedback.style.display = "none"
     }
 </script>
