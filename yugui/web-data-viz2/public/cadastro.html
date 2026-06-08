@@ -52,6 +52,7 @@
         <button type="button" onclick="validarCampos()" class="hover1">Registrar</button>
         <div class="register-a">
           <span>Já possui uma conta? </span><a href="login.html">Entre aqui!</a>
+          <div class="mensagemFeedback" id="mensagemFeedback"></div>
         </div>
       </form>
     </div>
@@ -76,50 +77,59 @@
     let id_empresa;
 
     if (!nome || !sobrenome || !email || !cpf || !senha || !confirmacao_senha || !codigo_ativacao) {
-      alert("Verifique se todos os campos de cadastro foram devidamente preenchidos.");
+      mensagemFeedback.innerHTML = `<p class = "erroFeedback">Todos os campos devem ser preenchidos!</p>`
+      setInterval(sumirMensagem, 4000)
       return;
     }
 
     if (nome.length <= 1) {
-      alert("O nome deve ter mais de um caractere.");
-      return;
+      mensagemFeedback.innerHTML = `<p class = "erroFeedback">O nome deve ter mais de um caractere!</p>`
+      setInterval(sumirMensagem, 4000)
+      return
     }
 
     if (sobrenome.length <= 1) {
-      alert("O sobrenome deve ter mais de um caractere.");
-      return;
+      mensagemFeedback.innerHTML = `<p class = "erroFeedback">O sobrenome deve ter mais de um caractere!</p>`
+      setInterval(sumirMensagem, 4000)
+      return
     }
 
     if (nome_completo.length > 50) {
-      alert("Peço que, por gentileza, abrevie seu(s) sobrenome(s)");
+      mensagemFeedback.innerHTML = `<p class = "erroFeedback">Abrevie o seu sobrenome!</p>`
+      setInterval(sumirMensagem, 4000)
       return;
     }
 
     if (email.length > 50 || email.includes(" ") || !email.includes("@") ||
       !email.includes(".") || email.lastIndexOf(".") < email.lastIndexOf("@")) {
-      alert("Insira um endereço de e-mail válido.");
+      mensagemFeedback.innerHTML = `<p class = "erroFeedback">Insira um endereço de email válido!</p>`
+      setInterval(sumirMensagem, 4000)
       return;
     }
 
     if (cpf.length != 11) {
-      alert("Insira um CPF válido.");
+      mensagemFeedback.innerHTML = `<p class = "erroFeedback">insira um CPF válido!</p>`
+      setInterval(sumirMensagem, 4000)
       return;
     }
 
     if (senha.length < 8 || senha.length > 50) {
-      alert("A senha deve ter entre 8 e 50 caracteres.");
+      mensagemFeedback.innerHTML = `<p class = "erroFeedback">A senha deve ter entre 8 e 50 caracteres!</p>`
+      setInterval(sumirMensagem, 4000)
       return;
     }
 
     if (senha != confirmacao_senha) {
-      alert("As senhas não coincidem.");
+      mensagemFeedback.innerHTML = `<p class = "erroFeedback">As senhas não coincidem!</p>`
+      setInterval(sumirMensagem, 4000)
       return;
     }
 
     for (let i = 0; i < lista_empresas.length; i++) {
       if (lista_empresas[i].codigo_ativacao == codigo_ativacao) {
         id_empresa = lista_empresas[i].id
-        console.log("Código de ativação válido.");
+        mensagemFeedback.innerHTML = `<p class = "acertoFeedback">Código de ativação válido!</p>`
+        setInterval(sumirMensagem, 4000)
         break;
       }
     }
@@ -140,7 +150,8 @@
       console.log("resposta: ", resposta);
 
       if (resposta.ok) {
-        alert("Cadastro finalizado com sucesso! Tente se autenticar com sua nova conta.");
+        mensagemFeedback.innerHTML = `<p class = "acertoFeedback">Cadastro realizado com sucesso!</p>`
+        setInterval(sumirMensagem, 4000)
         window.location = "login.html";
       } else {
         throw "Houve um erro ao tentar realizar o cadastro!";
@@ -173,5 +184,9 @@
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
       });
+  }
+
+  function sumirMensagem() {
+    mensagemFeedback.style.display = "none"
   }
 </script>

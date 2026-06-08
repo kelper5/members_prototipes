@@ -125,3 +125,22 @@ figure img{
     width: 50%;
     background-size: cover;
 }
+
+.mensagemFeedback{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.erroFeedback{
+    background-color: #e26363;
+    color: #fff;
+    width: 100%;
+}
+
+.acertoFeedback{
+    background-color: #51b366;
+    color: #fff;
+    width: 100%;
+}

@@ -28,6 +28,7 @@
                 <button type="button" class="hover1" onclick="entrar()">Entrar</button>
                 <div class="register-a">
                     <span>Não possui uma conta? </span><a href="cadastro.html">Cadaste-se aqui!</a>
+                    <div class="mensagemFeedback" id="mensagemFeedback"></div>
                 </div>
             </form>
         </div>
@@ -50,13 +51,12 @@
         const senhaVar = senha_input.value;
 
         if (emailVar == "" || senhaVar == "") {
-            // cardErro.style.display = "block"
-            // mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            // finalizarAguardar();
+            mensagemFeedback.innerHTML = `<p class = "erroFeedback">Todos os campos devem ser preenchidos!</p>`
+            setInterval(sumirMensagem, 5000)
             return false;
         }
         else {
-            // setInterval(sumirMensagem, 5000)
+
         }
 
         console.log("FORM LOGIN: ", emailVar);
@@ -91,16 +91,18 @@
                             window.location = "./admin/admin_list_empresas.html";
                         }, 1000); // apenas para exibir o loading
                     } else {
+                        mensagemFeedback.innerHTML = `<p class = "acertoFeedback">Login efetuado com sucesso!</p>`
+                        setInterval(sumirMensagem, 5000)
                         setTimeout(function () {
                             window.location = "./dashboard/cards.html";
-                        }, 1000); // apenas para exibir o loading
+                        }, 3000); // apenas para exibir o loading
                     }
 
                 });
 
             } else {
 
-                console.log("Houve um erro ao tentar realizar o login!");
+                mensagemFeedback.innerHTML = `<p class = "erroFeedback">Erro ao realizar o login</p>`
 
                 resposta.text().then(texto => {
                     console.error(texto);
@@ -115,8 +117,8 @@
         return false;
     }
 
-    // function sumirMensagem() {
-    //     cardErro.style.display = "none"
-    // }
+    function sumirMensagem() {
+        mensagemFeedback.style.display = "none"
+    }
 
 </script>
