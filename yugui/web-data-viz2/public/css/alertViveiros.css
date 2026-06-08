@@ -339,12 +339,15 @@ canvas{
 
 .baixoAlerta{
     background-color: #3D8F40;
+    color: #fff;
 }
 
 .medioAlerta{
     background-color: #e0ce64;
+    color: #fff;
 }
 
 .altoAlerta{
     background-color: #ca3f3f;
+    color: #fff;
 }
