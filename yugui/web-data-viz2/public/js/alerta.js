@@ -5,7 +5,7 @@ function obterdados(idViveiro, biomassa_media) {
         .then(resposta => {
             if (resposta.status == 200) {
                 resposta.json().then(resposta => {
-                    let ire = biomassa_media * resposta[0].temperatura * resposta[0].luminosidade / 15000000
+                    let ire = (biomassa_media * resposta[0].temperatura * resposta[0].luminosidade / 15000000).toFixed(2)
                     let viveiroNome = resposta[0].viveiroNome
                     let novoArray = [];
 

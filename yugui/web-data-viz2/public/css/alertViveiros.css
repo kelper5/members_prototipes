@@ -226,6 +226,7 @@ canvas{
     color: #fff;
     padding-left: 20px;
     background-color: #253528;
+    justify-content: center;
 }
 
 .stats{
@@ -235,6 +236,7 @@ canvas{
     flex-direction: row;
     gap: 40px;
     text-align: justify;
+    font-size: 1.5em;
 }
 
 /* DASH ALERTA */
@@ -340,14 +342,20 @@ canvas{
 .baixoAlerta{
     background-color: #3D8F40;
     color: #fff;
+    margin-left: 10px;
+    padding: 5px;
 }
 
 .medioAlerta{
     background-color: #e0ce64;
     color: #fff;
+    margin-left: 10px;
+    padding: 5px;
 }
 
 .altoAlerta{
     background-color: #ca3f3f;
     color: #fff;
+    margin-left: 10px;
+    padding: 5px;
 }
