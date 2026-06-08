@@ -336,3 +336,15 @@ canvas{
     width: 20px;
     height: 20px;
 }
+
+.baixoAlerta{
+    background-color: #3D8F40;
+}
+
+.medioAlerta{
+    background-color: #e0ce64;
+}
+
+.altoAlerta{
+    background-color: #ca3f3f;
+}

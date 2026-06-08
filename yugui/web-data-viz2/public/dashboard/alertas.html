@@ -63,6 +63,21 @@
 
             console.log("ID ARDUINO:");
             console.log(item.idArduino);
+
+            let classe = ""
+            let risco = ""
+
+            if(item.ire >0.5 && item.ire <1.0){
+                classe = "baixoAlerta"
+                risco = "Baixo"
+            }else if(item.ire >=1.0 && item.ire <2.0){
+                classe = "medioAlerta"
+                risco = "Médio"
+            }else if(item.ire >= 2.0){
+                classe = "altoAlerta"
+                risco = "Alto"
+            }
+
             alertasTotais++
 
             document.getElementById("insertCards").innerHTML +=
@@ -71,7 +86,7 @@
                         <h1>${item.viveiroNome}</h1>
                         <div class="stats">
                             <span>IRE: ${item.ire}</span>
-                            <span>Risco: ${"Situação"}</span>
+                            <span class = "${classe}">Risco: ${risco}</span>
                         </div>
                     </div>
                     `
