@@ -62,10 +62,14 @@ CREATE TABLE captura (
     FOREIGN KEY (fk_arduino) REFERENCES arduino(id)
 );
 
-CREATE TABLE aviso (
-	id INT PRIMARY KEY AUTO_INCREMENT,		
-	nivel_risco DECIMAL(4, 2) NOT NULL,
-	fk_usuario INT NOT NULL,
-	criado_em DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
- );
+-- CREATE TABLE aviso (
+-- 	id INT PRIMARY KEY AUTO_INCREMENT,		
+-- 	nivel_risco DECIMAL(4, 2) NOT NULL,
+-- 	fk_usuario INT NOT NULL,
+-- 	criado_em DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+--     FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
+--  );
+
+CREATE VIEW vw_empresas AS
+SELECT id, razao_social, cnpj, codigo_ativacao, fk_matriz 
+FROM empresa
