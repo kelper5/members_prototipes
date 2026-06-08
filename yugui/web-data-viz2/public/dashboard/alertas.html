@@ -55,9 +55,9 @@
     var alertasTotais = 0
 
     async function exibirAlertas() {
-        console.log(sessionStorage.ALERTAS)
+        console.log(sessionStorage.ALERTA)
 
-        await JSON.parse(sessionStorage.ALERTAS).forEach(async item => {
+        await JSON.parse(sessionStorage.ALERTA).forEach(async item => {
             console.log("ITEM:");
             console.log(item);
 
@@ -68,17 +68,15 @@
             document.getElementById("insertCards").innerHTML +=
                 `
                     <div class="viveiro">
-                        <h1>${item.nome}</h1>
+                        <h1>${item.viveiroNome}</h1>
                         <div class="stats">
-                            <span>Temperatura: ${temperatura} C</span>
-                            <span>Luminosidade: ${luminosidade}</span>
-                            <span  class="${situacao}">Status: ATIVO</span>
+                            <span>IRE: ${item.ire}</span>
+                            <span>Risco: ${"Situação"}</span>
                         </div>
                     </div>
                     `
 
-            viveirosTotaisOut.innerHTML = viveirosTotais
-            viveirosAtivosOut.innerHTML = viveirosAtivos
+            alertasOut.innerHTML = alertasTotais
         });
 
 

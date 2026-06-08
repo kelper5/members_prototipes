@@ -6,7 +6,7 @@ function obterdados(idViveiro, biomassa_media) {
             if (resposta.status == 200) {
                 resposta.json().then(resposta => {
                     let ire = biomassa_media * resposta[0].temperatura * resposta[0].luminosidade / 15000000
-
+                    let viveiroNome = resposta[0].viveiroNome
                     let novoArray = [];
 
                     for (let i = 0; i < viveiros_alerta.length; i++) {
@@ -16,7 +16,7 @@ function obterdados(idViveiro, biomassa_media) {
                     }
 
                     if (ire > 0.5) {
-                        novoArray.push({ idViveiro, ire });
+                        novoArray.push({ idViveiro, viveiroNome, ire });
                     }
 
                     viveiros_alerta = novoArray;

@@ -19,17 +19,24 @@ function buscarCapturasEmTempoReal(idArduino) {
 
     var instrucaoSql = `
         SELECT
-            ROUND(AVG(temperatura), 2) AS temperatura,
-            ROUND(AVG(luminosidade), 2) AS luminosidade
+        ROUND(AVG(c.temperatura), 2) AS temperatura,
+        ROUND(AVG(c.luminosidade), 2) AS luminosidade,
+        v.nome AS viveiroNome
         FROM (
             SELECT
                 temperatura,
-                luminosidade
+                luminosidade,
+                fk_arduino
             FROM captura
             WHERE fk_arduino = ${idArduino}
             ORDER BY id DESC
             LIMIT 168
-        ) AS ultimas_capturas;
+        ) AS c
+        JOIN arduino a
+        ON c.fk_arduino = a.id
+        JOIN viveiro v
+        ON a.fk_viveiro = v.id
+        GROUP BY v.nome;
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
