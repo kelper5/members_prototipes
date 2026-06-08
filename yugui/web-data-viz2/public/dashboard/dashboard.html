@@ -248,8 +248,8 @@
             document.getElementById("myChartLum"),
             configLum
         );
-        lastLum.innerHTML = dados.datasets[0].data[dados.datasets[0].data.length - 1]
-        lastTemp.innerHTML = dados.datasets[1].data[dados.datasets[1].data.length - 1]
+        lastLum.innerHTML = `${dados.datasets[0].data[dados.datasets[0].data.length - 1]} LUX`
+        lastTemp.innerHTML = `${dados.datasets[1].data[dados.datasets[1].data.length - 1]} °C`
         setTimeout(() => atualizarGrafico(idArduino, dados, myChartTemp, myChartLum), 2000);
     }
 
@@ -297,8 +297,8 @@
 
                         myChartTemp.update();
                         myChartLum.update();
-                        lastLum.innerHTML = novoRegistro[0].luminosidade
-                        lastTemp.innerHTML = novoRegistro[0].temperatura
+                        lastLum.innerHTML = `${novoRegistro[0].luminosidade} LUX`
+                        lastTemp.innerHTML = `${novoRegistro[0].temperatura} °C`
                     }
 
                     // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
