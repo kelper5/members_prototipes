@@ -22,6 +22,25 @@ function buscarUltimasCapturas(req, res) {
 }
 
 
+function buscarCapturasEmTempoRealOriginal(req, res) {
+
+    const idArduino = req.params.idArduino;
+
+    console.log(`Recuperando capturas em tempo real`);
+
+    capturaModel.buscarCapturasEmTempoRealOriginal(idArduino).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas capturas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 function buscarCapturasEmTempoReal(req, res) {
 
     const idArduino = req.params.idArduino;
@@ -63,5 +82,6 @@ function buscarCapturasParaTelaViveiros(req, res) {
 module.exports = {
     buscarUltimasCapturas,
     buscarCapturasEmTempoReal,
-    buscarCapturasParaTelaViveiros
+    buscarCapturasParaTelaViveiros,
+    buscarCapturasEmTempoRealOriginal
 }

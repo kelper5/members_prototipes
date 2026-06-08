@@ -1,11 +1,12 @@
-let viveiros_alerta = JSON.parse(sessionStorage.ALERTA || "[]");
+let viveiros_alerta = JSON.parse(sessionStorage.ALERTA || []);
 
 function obterdados(idViveiro, biomassa_media) {
     fetch(`/capturas/tempo-real/${idViveiro}`)
         .then(resposta => {
             if (resposta.status == 200) {
                 resposta.json().then(resposta => {
-                    let ire = (biomassa_media * resposta[0].temperatura * resposta[0].luminosidade / 15000000).toFixed(2)
+                    let ire = (((biomassa_media * resposta[0].temperatura * resposta[0].luminosidade) / 15000000)*10).toFixed(2)
+                    console.log(idViveiro, ire)
                     let viveiroNome = resposta[0].viveiroNome
                     let novoArray = [];
 

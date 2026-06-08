@@ -11,6 +11,10 @@ router.get("/tempo-real/:idArduino", function (req, res) {
     capturaController.buscarCapturasEmTempoReal(req, res);
 })
 
+router.get("/tempo-real-original/:idArduino", function (req, res) {
+    capturaController.buscarCapturasEmTempoRealOriginal(req, res);
+})
+
 router.get("/ultimosViveiro/:idArduino", function (req, res) {
     capturaController.buscarCapturasParaTelaViveiros(req, res);
 })

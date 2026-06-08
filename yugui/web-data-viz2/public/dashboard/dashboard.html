@@ -261,7 +261,7 @@
     //     Para ajustar o "select", ajuste o comando sql em src/models
     function atualizarGrafico(idArduino, dados, myChartTemp, myChartLum) {
 
-        fetch(`/capturas/tempo-real/${idArduino}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/capturas/tempo-real-original/${idArduino}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (novoRegistro) {
 
@@ -273,7 +273,8 @@
 
                     // let avisoCaptura = document.getElementById(`avisoCaptura${idArduino}`)
                     // avisoCaptura.innerHTML = ""
-
+                    console.log(novoRegistro)
+                    console.log(dados.labels[dados.labels.length - 1])
 
                     if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
                         console.log("---------------------------------------------------------------")
